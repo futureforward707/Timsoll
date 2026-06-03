@@ -2,591 +2,1233 @@
 <html lang="uz">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Timsoll — B2B Avtozapchast Platformasi</title>
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-<style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --blue:#1750C8;
-  --blue-dark:#1240A8;
-  --blue-deeper:#0D2F80;
-  --blue-light:#2563E8;
-  --blue-glow:rgba(23,80,200,0.15);
-  --blue-pale:#EEF3FF;
-  --white:#FFFFFF;
-  --bg:#F4F7FF;
-  --bg2:#EBF0FF;
-  --dark:#0D1B4B;
-  --dark2:#1A2E6B;
-  --text:#0D1B4B;
-  --text2:#3A4E8C;
-  --text3:#7A8DBB;
-  --border:#D0DAFF;
-  --border2:#B8C6F0;
-  --gold:#F59E0B;
-  --green:#10B981;
-  --font:'Nunito',sans-serif;
-  --mono:'JetBrains Mono',monospace;
-}
-html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--text);font-family:var(--font);font-size:15px;line-height:1.6;overflow-x:hidden}
-::-webkit-scrollbar{width:4px}
-::-webkit-scrollbar-track{background:var(--bg)}
-::-webkit-scrollbar-thumb{background:var(--blue);border-radius:2px}
-
-/* TICKER */
-.ticker{background:var(--blue-deeper);padding:7px 0;overflow:hidden;white-space:nowrap}
-.ticker-inner{display:inline-flex;animation:ticker 35s linear infinite}
-.ticker-item{font-family:var(--mono);font-size:11px;letter-spacing:0.07em;padding:0 2rem;color:rgba(255,255,255,0.85)}
-.ticker-item span{opacity:0.5;margin-right:6px}
-@keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-
-/* HEADER */
-header{position:sticky;top:0;z-index:100;background:var(--blue);box-shadow:0 2px 16px rgba(23,80,200,0.25)}
-.header-top{display:flex;align-items:center;gap:1rem;padding:0.8rem 2rem}
-.logo-wrap{display:flex;align-items:center;gap:10px;flex-shrink:0}
-.logo-img{height:36px;background:rgba(255,255,255,0.15);border-radius:8px;padding:4px 12px;display:flex;align-items:center;justify-content:center}
-.logo-text{font-size:1.55rem;font-weight:800;color:#fff;letter-spacing:-0.02em}
-.logo-text em{opacity:0.7;font-style:normal;font-weight:400;font-size:0.55em;display:block;letter-spacing:0.1em;margin-top:-4px}
-.header-search{flex:1;max-width:500px;margin:0 auto;position:relative}
-.header-search input{width:100%;background:rgba(255,255,255,0.15);border:1.5px solid rgba(255,255,255,0.25);border-radius:50px;padding:10px 48px 10px 18px;color:#fff;font-family:var(--font);font-size:14px;outline:none;transition:all 0.2s}
-.header-search input::placeholder{color:rgba(255,255,255,0.55)}
-.header-search input:focus{background:rgba(255,255,255,0.22);border-color:rgba(255,255,255,0.5)}
-.header-search button{position:absolute;right:4px;top:50%;transform:translateY(-50%);width:36px;height:36px;background:rgba(255,255,255,0.2);border:none;border-radius:50px;color:#fff;cursor:pointer;transition:background 0.2s;display:flex;align-items:center;justify-content:center}
-.header-search button:hover{background:rgba(255,255,255,0.3)}
-.header-actions{display:flex;align-items:center;gap:8px;margin-left:auto}
-.btn-sm{display:flex;align-items:center;gap:7px;padding:8px 16px;border-radius:50px;font-size:13px;font-weight:600;cursor:pointer;transition:all 0.2s;white-space:nowrap;text-decoration:none;font-family:var(--font)}
-.btn-white{background:#fff;border:none;color:var(--blue)}
-.btn-white:hover{background:var(--blue-pale);transform:translateY(-1px)}
-.btn-outline-w{background:transparent;border:1.5px solid rgba(255,255,255,0.4);color:#fff}
-.btn-outline-w:hover{background:rgba(255,255,255,0.15)}
-.cart-btn{position:relative}
-.cart-count{position:absolute;top:-5px;right:-4px;background:var(--gold);color:#000;font-size:9px;font-weight:700;width:17px;height:17px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--mono)}
-.b2b-badge{display:inline-flex;align-items:center;gap:5px;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.3);border-radius:50px;padding:5px 12px;font-family:var(--mono);font-size:10px;color:#fff;letter-spacing:0.1em}
-
-/* NAV */
-nav{background:var(--blue-dark);border-bottom:1px solid rgba(255,255,255,0.1)}
-.nav-inner{display:flex;align-items:center;padding:0 2rem;overflow-x:auto;scrollbar-width:none}
-.nav-inner::-webkit-scrollbar{display:none}
-.nav-link{display:flex;align-items:center;gap:7px;padding:11px 16px;font-size:13px;font-weight:600;color:rgba(255,255,255,0.65);white-space:nowrap;border-bottom:2.5px solid transparent;transition:all 0.2s;cursor:pointer;text-decoration:none}
-.nav-link:hover{color:#fff}
-.nav-link.active{color:#fff;border-bottom-color:#fff}
-.nav-link i{font-size:13px}
-.nav-sep{width:1px;height:18px;background:rgba(255,255,255,0.15);margin:0 4px;flex-shrink:0}
-
-/* HERO */
-.hero{background:linear-gradient(135deg,var(--blue) 0%,var(--blue-deeper) 100%);padding:0 2rem}
-.hero-grid{display:grid;grid-template-columns:1fr 320px;gap:1.5rem;padding:1.5rem 0}
-.hero-main{position:relative;overflow:hidden;min-height:320px;display:flex;flex-direction:column;justify-content:flex-end}
-.hero-circles{position:absolute;top:-40px;right:-40px;width:300px;height:300px;border-radius:50%;border:60px solid rgba(255,255,255,0.05);pointer-events:none}
-.hero-circles::after{content:'';position:absolute;inset:-40px;border-radius:50%;border:40px solid rgba(255,255,255,0.04)}
-.hero-label{font-family:var(--mono);font-size:10px;letter-spacing:0.2em;color:rgba(255,255,255,0.6);margin-bottom:0.6rem;text-transform:uppercase}
-.hero-title{font-size:3rem;font-weight:800;line-height:1.05;letter-spacing:-0.02em;color:#fff;margin-bottom:0.85rem}
-.hero-title em{color:rgba(255,255,255,0.6);font-style:normal;font-weight:400}
-.hero-desc{font-size:14px;color:rgba(255,255,255,0.7);max-width:400px;line-height:1.6;margin-bottom:1.5rem}
-.hero-stats{display:flex;gap:2rem}
-.hero-stat strong{font-size:1.6rem;font-weight:800;color:#fff;display:block;line-height:1}
-.hero-stat span{font-size:11px;color:rgba(255,255,255,0.55);font-family:var(--mono);letter-spacing:0.06em}
-.hero-side{display:flex;flex-direction:column;gap:10px}
-.side-card{background:rgba(255,255,255,0.1);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.2);border-radius:12px;padding:1.1rem 1.25rem;cursor:pointer;transition:all 0.25s;position:relative;overflow:hidden}
-.side-card:hover{background:rgba(255,255,255,0.18);transform:translateX(-3px)}
-.side-card.highlight{background:rgba(255,255,255,0.18);border-color:rgba(255,255,255,0.4)}
-.side-card-label{font-size:9px;color:rgba(255,255,255,0.5);font-family:var(--mono);letter-spacing:0.15em;margin-bottom:3px;text-transform:uppercase}
-.side-card-title{font-size:15px;font-weight:700;color:#fff;margin-bottom:2px}
-.side-card-sub{font-size:12px;color:rgba(255,255,255,0.6)}
-.side-card-num{position:absolute;top:0.9rem;right:1rem;font-size:1.8rem;font-weight:800;color:rgba(255,255,255,0.1)}
-
-/* SECTION */
-.section{padding:1.5rem 2rem}
-.section-header{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:1rem}
-.section-title{font-size:1.35rem;font-weight:800;color:var(--dark);letter-spacing:-0.01em}
-.section-title em{color:var(--blue);font-style:normal}
-.section-link{font-size:12px;color:var(--blue);font-weight:600;cursor:pointer;transition:opacity 0.2s;font-family:var(--mono)}
-.section-link:hover{opacity:0.7}
-
-/* CATEGORIES */
-.cat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
-.cat-card{background:#fff;border:1.5px solid var(--border);border-radius:12px;padding:1.1rem;cursor:pointer;transition:all 0.22s}
-.cat-card:hover{border-color:var(--blue);box-shadow:0 4px 16px var(--blue-glow);transform:translateY(-2px)}
-.cat-card:hover .cat-count{color:var(--blue)}
-.cat-icon{width:42px;height:42px;background:var(--bg2);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;margin-bottom:0.7rem}
-.cat-name{font-size:13px;font-weight:700;color:var(--dark);margin-bottom:2px}
-.cat-sub{font-size:11px;color:var(--text3);margin-bottom:5px}
-.cat-count{font-family:var(--mono);font-size:11px;color:var(--text3);transition:color 0.22s}
-
-/* FILTER BAR */
-.filter-bar{background:#fff;border:1.5px solid var(--border);border-radius:10px;padding:0.85rem 1.25rem;margin-bottom:1.25rem;display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
-.filter-label{font-size:11px;font-family:var(--mono);color:var(--text3);letter-spacing:0.1em;white-space:nowrap}
-.filter-tags{display:flex;gap:6px;flex-wrap:wrap;flex:1}
-.filter-tag{display:flex;align-items:center;gap:5px;padding:5px 14px;border-radius:50px;border:1.5px solid var(--border);font-size:12px;font-weight:600;color:var(--text2);cursor:pointer;transition:all 0.2s;background:transparent;font-family:var(--font)}
-.filter-tag:hover,.filter-tag.active{border-color:var(--blue);color:var(--blue);background:var(--blue-glow)}
-.filter-sep{width:1px;height:20px;background:var(--border);flex-shrink:0}
-.sort-select{background:var(--bg);border:1.5px solid var(--border);border-radius:8px;padding:6px 12px;color:var(--text2);font-size:12px;font-family:var(--font);font-weight:600;outline:none;cursor:pointer}
-
-/* PRODUCTS */
-.products-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
-.prod-card{background:#fff;border:1.5px solid var(--border);border-radius:12px;overflow:hidden;cursor:pointer;transition:all 0.22s;display:flex;flex-direction:column}
-.prod-card:hover{border-color:var(--blue);box-shadow:0 6px 20px var(--blue-glow);transform:translateY(-2px)}
-.prod-img{aspect-ratio:4/3;background:var(--bg2);display:flex;align-items:center;justify-content:center;position:relative}
-.prod-img-placeholder{font-size:2.8rem;opacity:0.35}
-.prod-badge{position:absolute;top:8px;left:8px;font-family:var(--mono);font-size:9px;letter-spacing:0.08em;padding:3px 8px;border-radius:50px}
-.badge-new{background:var(--blue);color:#fff}
-.badge-sale{background:var(--gold);color:#fff}
-.badge-top{background:var(--dark);color:#fff}
-.prod-brand{position:absolute;top:8px;right:8px;background:rgba(255,255,255,0.9);border-radius:6px;padding:3px 8px;font-size:10px;font-weight:700;color:var(--blue)}
-.prod-body{padding:0.9rem;flex:1;display:flex;flex-direction:column;gap:5px}
-.prod-cat{font-family:var(--mono);font-size:10px;color:var(--blue);letter-spacing:0.07em;font-weight:500}
-.prod-name{font-size:13px;font-weight:700;color:var(--dark);line-height:1.3;flex:1}
-.prod-code{font-family:var(--mono);font-size:10px;color:var(--text3)}
-.prod-compat{font-size:11px;color:var(--text3);display:flex;align-items:center;gap:4px}
-.prod-compat i{font-size:10px;color:var(--green)}
-.prod-footer{padding:0.7rem 0.9rem;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;gap:8px}
-.prod-price strong{font-family:var(--mono);font-size:14px;color:var(--dark);display:block}
-.prod-price span{font-size:10px;color:var(--text3)}
-.prod-moq{font-family:var(--mono);font-size:9px;color:var(--gold);background:rgba(245,158,11,0.1);border:1px solid rgba(245,158,11,0.25);border-radius:50px;padding:2px 7px;white-space:nowrap}
-.prod-add{width:32px;height:32px;background:var(--blue);border:none;border-radius:8px;color:#fff;font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background 0.2s;flex-shrink:0}
-.prod-add:hover{background:var(--blue-dark)}
-
-/* CONTENT LAYOUT */
-.content-layout{display:grid;grid-template-columns:230px 1fr;gap:1.5rem;padding:1.5rem 2rem}
-.sidebar{display:flex;flex-direction:column;gap:12px}
-.sidebar-block{background:#fff;border:1.5px solid var(--border);border-radius:12px;overflow:hidden}
-.sidebar-block-title{padding:0.7rem 1rem;border-bottom:1px solid var(--border);font-size:11px;font-weight:700;color:var(--text2);letter-spacing:0.07em;font-family:var(--mono);text-transform:uppercase;display:flex;align-items:center;justify-content:space-between}
-.sidebar-block-title button{background:none;border:none;color:var(--text3);font-size:11px;cursor:pointer;font-family:var(--mono);transition:color 0.2s}
-.sidebar-block-title button:hover{color:var(--blue)}
-.sidebar-list{padding:4px 0}
-.sidebar-item{display:flex;align-items:center;justify-content:space-between;padding:7px 1rem;cursor:pointer;transition:background 0.15s;font-size:13px;color:var(--text2);font-weight:500}
-.sidebar-item:hover{background:var(--bg);color:var(--dark)}
-.sidebar-item.active{color:var(--blue);background:var(--blue-glow)}
-.sidebar-count{font-family:var(--mono);font-size:10px;color:var(--text3);background:var(--bg2);padding:1px 7px;border-radius:50px}
-.sidebar-item.active .sidebar-count{color:var(--blue);background:rgba(23,80,200,0.1)}
-
-/* MODAL */
-.modal-overlay{position:fixed;inset:0;background:rgba(13,27,75,0.7);z-index:1000;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(6px);opacity:0;pointer-events:none;transition:opacity 0.25s}
-.modal-overlay.open{opacity:1;pointer-events:all}
-.modal{background:#fff;border-radius:16px;width:100%;max-width:440px;padding:2rem;position:relative;transform:translateY(20px);transition:transform 0.25s;box-shadow:0 20px 60px rgba(23,80,200,0.25)}
-.modal-overlay.open .modal{transform:translateY(0)}
-.modal-close{position:absolute;top:1rem;right:1rem;background:var(--bg);border:1.5px solid var(--border);width:30px;height:30px;border-radius:8px;color:var(--text3);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:13px;transition:all 0.2s}
-.modal-close:hover{color:var(--blue);border-color:var(--blue)}
-.modal-logo{display:flex;align-items:center;gap:10px;margin-bottom:4px}
-.modal-logo-box{background:var(--blue);border-radius:10px;padding:6px 14px;font-size:1.3rem;font-weight:800;color:#fff;letter-spacing:-0.01em}
-.modal-sub{font-size:12px;color:var(--text3);margin-bottom:1.25rem;font-weight:500}
-.modal-tabs{display:flex;gap:4px;margin-bottom:1.5rem;background:var(--bg);border-radius:10px;padding:4px}
-.modal-tab{flex:1;padding:8px;text-align:center;font-size:13px;font-weight:700;color:var(--text3);cursor:pointer;border-radius:8px;transition:all 0.2s}
-.modal-tab.active{background:#fff;color:var(--blue);box-shadow:0 1px 4px rgba(23,80,200,0.15)}
-.form-group{margin-bottom:0.9rem}
-.form-label{display:block;font-size:11px;color:var(--text2);font-weight:700;letter-spacing:0.06em;margin-bottom:5px;text-transform:uppercase}
-.form-input{width:100%;background:var(--bg);border:1.5px solid var(--border);border-radius:8px;padding:10px 14px;color:var(--dark);font-family:var(--font);font-size:14px;font-weight:500;outline:none;transition:border-color 0.2s}
-.form-input:focus{border-color:var(--blue);background:#fff}
-.form-note{font-size:11px;color:var(--text3);margin-top:5px;line-height:1.5;font-weight:500}
-.form-note strong{color:var(--blue)}
-.b2b-notice{background:rgba(245,158,11,0.07);border:1.5px solid rgba(245,158,11,0.3);border-radius:10px;padding:0.75rem 1rem;margin-bottom:1rem;font-size:12px;color:#92600A;display:flex;gap:8px;align-items:flex-start;line-height:1.5;font-weight:500}
-.b2b-notice i{margin-top:2px;flex-shrink:0;color:var(--gold)}
-.category-options{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:0.75rem}
-.cat-option{border:1.5px solid var(--border);border-radius:10px;padding:0.75rem 0.5rem;text-align:center;cursor:pointer;transition:all 0.2s;background:#fff}
-.cat-option:hover{border-color:var(--blue-light)}
-.cat-option.selected{border-color:var(--blue);background:var(--blue-glow)}
-.cat-option i{font-size:1.2rem;display:block;margin-bottom:5px;color:var(--text3)}
-.cat-option.selected i{color:var(--blue)}
-.cat-option span{font-size:11px;color:var(--text2);display:block;font-weight:700}
-.cat-option.selected span{color:var(--blue)}
-.btn-block{width:100%;padding:12px;border-radius:50px;font-size:14px;font-weight:700;cursor:pointer;transition:all 0.2s;font-family:var(--font);background:var(--blue);border:none;color:#fff}
-.btn-block:hover{background:var(--blue-dark);transform:translateY(-1px)}
-
-/* CART PANEL */
-.cart-panel{position:fixed;top:0;right:0;bottom:0;width:380px;background:#fff;border-left:1.5px solid var(--border);z-index:200;transform:translateX(100%);transition:transform 0.3s;display:flex;flex-direction:column;box-shadow:-4px 0 24px rgba(23,80,200,0.12)}
-.cart-panel.open{transform:translateX(0)}
-.cart-header{padding:1.25rem 1.5rem;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;background:var(--blue)}
-.cart-header h3{font-size:1.1rem;font-weight:800;color:#fff;letter-spacing:0.02em}
-.cart-items{flex:1;overflow-y:auto;padding:1rem 1.5rem;display:flex;flex-direction:column;gap:0.75rem}
-.cart-item{display:flex;gap:12px;padding:0.75rem;background:var(--bg);border:1.5px solid var(--border);border-radius:10px}
-.cart-item-img{width:48px;height:48px;background:var(--bg2);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.2rem;opacity:0.6;flex-shrink:0}
-.cart-item-info{flex:1}
-.cart-item-name{font-size:12px;font-weight:700;color:var(--dark);line-height:1.3;margin-bottom:3px}
-.cart-item-qty{display:flex;align-items:center;gap:8px;margin-top:5px}
-.qty-btn{width:22px;height:22px;background:#fff;border:1.5px solid var(--border);border-radius:6px;color:var(--blue);font-size:13px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-weight:700}
-.qty-val{font-family:var(--mono);font-size:12px;min-width:20px;text-align:center;font-weight:600;color:var(--dark)}
-.cart-item-price{font-family:var(--mono);font-size:13px;color:var(--blue);align-self:center;font-weight:600;white-space:nowrap}
-.cart-footer{padding:1.25rem 1.5rem;border-top:1.5px solid var(--border)}
-.cart-total{display:flex;align-items:center;justify-content:space-between;margin-bottom:0.75rem}
-.cart-total-label{font-size:13px;color:var(--text2);font-weight:600}
-.cart-total-val{font-family:var(--mono);font-size:1.15rem;color:var(--dark);font-weight:700}
-.cart-note{font-size:11px;color:var(--text3);margin-bottom:0.85rem;line-height:1.5;font-weight:500}
-.cart-note strong{color:var(--blue)}
-
-/* TOAST */
-.toast{position:fixed;bottom:2rem;right:2rem;background:var(--blue);border-radius:10px;padding:12px 18px;font-size:13px;font-weight:600;color:#fff;display:flex;align-items:center;gap:8px;z-index:999;transform:translateY(100px);opacity:0;transition:all 0.3s;box-shadow:0 4px 16px rgba(23,80,200,0.4)}
-.toast.show{transform:translateY(0);opacity:1}
-
-/* MAGAZINE */
-.mag-section{padding:1.5rem 2rem;background:#fff;border-top:1.5px solid var(--border);border-bottom:1.5px solid var(--border)}
-.mag-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-.mag-card{border:1.5px solid var(--border);border-radius:12px;overflow:hidden;background:var(--bg);cursor:pointer;transition:all 0.2s}
-.mag-card:hover{border-color:var(--blue);box-shadow:0 4px 16px var(--blue-glow);transform:translateY(-2px)}
-.mag-img{height:130px;background:var(--bg2);display:flex;align-items:center;justify-content:center;font-size:2.5rem;opacity:0.4;position:relative}
-.mag-img-tag{position:absolute;bottom:8px;left:8px;background:var(--blue);color:#fff;font-size:9px;font-family:var(--mono);letter-spacing:0.1em;padding:3px 8px;border-radius:50px}
-.mag-body{padding:0.9rem}
-.mag-meta{font-family:var(--mono);font-size:10px;color:var(--text3);margin-bottom:4px}
-.mag-title{font-size:13px;font-weight:700;color:var(--dark);line-height:1.35}
-
-/* FOOTER */
-footer{background:var(--blue-deeper);padding:2rem;margin-top:2rem}
-.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:2rem;margin-bottom:1.5rem}
-.footer-logo{font-size:1.4rem;font-weight:800;color:#fff;display:inline-block;margin-bottom:8px;background:rgba(255,255,255,0.1);padding:6px 14px;border-radius:10px}
-.footer-brand p{font-size:12px;color:rgba(255,255,255,0.55);line-height:1.6;max-width:200px}
-.footer-col h4{font-size:10px;font-weight:700;color:rgba(255,255,255,0.45);letter-spacing:0.12em;font-family:var(--mono);text-transform:uppercase;margin-bottom:10px}
-.footer-col a{display:block;font-size:12px;font-weight:500;color:rgba(255,255,255,0.6);text-decoration:none;margin-bottom:7px;transition:color 0.2s;cursor:pointer}
-.footer-col a:hover{color:#fff}
-.footer-bottom{border-top:1px solid rgba(255,255,255,0.1);padding-top:1.25rem;display:flex;align-items:center;justify-content:space-between}
-.footer-bottom p{font-size:11px;color:rgba(255,255,255,0.35);font-family:var(--mono)}
-
-/* RESPONSIVE */
-@media(max-width:960px){
-  .hero-grid,.cat-grid,.products-grid,.mag-grid{grid-template-columns:repeat(2,1fr)}
-  .content-layout{grid-template-columns:1fr}
-  .sidebar{display:none}
-  .footer-grid{grid-template-columns:1fr 1fr}
-}
-@media(max-width:600px){
-  .hero-grid,.products-grid,.mag-grid,.cat-grid{grid-template-columns:1fr}
-  .header-top{padding:0.75rem 1rem;flex-wrap:wrap;gap:0.5rem}
-  .section,.content-layout,.mag-section{padding:1rem}
-  .hero{padding:0 1rem}
-  .nav-inner{padding:0 1rem}
-  .hero-title{font-size:2.2rem}
-  .cart-panel{width:100%}
-  .footer-grid{grid-template-columns:1fr}
-  .b2b-badge{display:none}
-}
-</style>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Timsoll Avto Zapchast</title>
+<style>*{margin:0;padding:0;box-sizing:border-box}body{font-family:'Segoe UI',Arial,sans-serif;background:#f4f5f7;color:#1c1c1c}.header{background:#fff;border-bottom:1px solid #e5e7eb;position:sticky;top:0;z-index:200;box-shadow:0 2px 8px rgba(0,0,0,.07)}.hm{max-width:1320px;margin:0 auto;padding:0 20px;height:68px;display:flex;align-items:center;gap:14px}.logo{font-size:24px;font-weight:800;color:#0f2b5b;letter-spacing:-1px;text-decoration:none;flex-shrink:0;cursor:pointer}.logo span{color:#1a56db}.cat-btn{display:flex;align-items:center;gap:8px;background:#1a56db;color:#fff;border:none;border-radius:8px;padding:10px 18px;font-size:14px;font-weight:600;cursor:pointer;flex-shrink:0}.sw{flex:1;display:flex;border:1.5px solid #e5e7eb;border-radius:8px;overflow:hidden}.sw input{flex:1;border:none;outline:none;padding:10px 16px;font-size:14px}.sb{background:#1a56db;color:#fff;border:none;padding:10px 20px;font-size:14px;font-weight:600;cursor:pointer}.hicons{display:flex;align-items:center;gap:2px;flex-shrink:0}.ibt{display:flex;flex-direction:column;align-items:center;gap:3px;background:none;border:none;cursor:pointer;padding:6px 10px;border-radius:8px;position:relative}.ibt:hover{background:#f4f5f7}.ibt .ico{font-size:20px}.ibt .lbl{font-size:10px;color:#6b7280;font-weight:500}.bdg{position:absolute;top:3px;right:7px;background:#1a56db;color:#fff;border-radius:50%;width:15px;height:15px;font-size:9px;display:flex;align-items:center;justify-content:center;font-weight:700}.navbar{background:#fff;border-bottom:1px solid #e5e7eb}.nbi{max-width:1320px;margin:0 auto;padding:0 20px;height:44px;display:flex;align-items:center;gap:2px;overflow-x:auto}.nbi::-webkit-scrollbar{display:none}.nl{white-space:nowrap;padding:6px 13px;border-radius:6px;font-size:13px;font-weight:500;color:#374151;cursor:pointer;border:none;background:none;transition:background .15s}.nl:hover{background:#eff6ff;color:#1a56db}.nl.hot{color:#e84040;font-weight:700}.nl.nw{color:#1a56db;font-weight:700}.nsep{width:1px;height:16px;background:#e5e7eb;flex-shrink:0;margin:0 4px}#home-page{display:block}#cat-page{display:none}.hero-wrap{max-width:1320px;margin:18px auto 0;padding:0 20px;display:grid;grid-template-columns:1fr 290px;gap:14px}.slider-wrap{position:relative;border-radius:14px;overflow:hidden;height:370px}.slide{display:none;width:100%;height:100%;position:relative}.slide.active{display:block}.sc{position:absolute;top:50%;left:44px;transform:translateY(-50%);color:#fff;max-width:400px}.stag{background:#1a56db;color:#fff;font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;display:inline-block;margin-bottom:12px}.stitle{font-size:30px;font-weight:800;line-height:1.25;margin-bottom:10px}.stitle em{color:#4a9eff;font-style:normal}.ssub{font-size:13px;color:rgba(255,255,255,.8);margin-bottom:18px;line-height:1.6}.sbtns{display:flex;gap:10px}.bp{background:#1a56db;color:#fff;border:none;padding:10px 20px;border-radius:8px;font-size:13px;font-weight:700;cursor:pointer}.bo{background:transparent;color:#fff;border:2px solid rgba(255,255,255,.5);padding:8px 18px;border-radius:8px;font-size:13px;cursor:pointer}.sarr{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.2);border:none;color:#fff;width:36px;height:36px;border-radius:50%;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:10}.sarr:hover{background:rgba(255,255,255,.4)}.al{left:10px}.ar{right:10px}.sdots{position:absolute;bottom:12px;left:50%;transform:translateX(-50%);display:flex;gap:6px}.dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.4);cursor:pointer}.dot.active{background:#fff;width:20px;border-radius:4px}.tp-box{background:#fff;border-radius:14px;border:1px solid #e5e7eb;display:flex;flex-direction:column;overflow:hidden}.tp-lbl{background:#0f2b5b;color:#fff;font-size:11px;font-weight:700;text-align:center;padding:7px;letter-spacing:.5px}.tp-body{flex:1;padding:14px;display:flex;flex-direction:column}.tp-img{width:100%;aspect-ratio:1;background:#f4f5f7;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:50px;margin-bottom:10px}.tp-name{font-size:12px;font-weight:700;color:#0f2b5b;margin-bottom:3px}.tp-oem{font-size:10px;color:#9ca3af;margin-bottom:7px}.tp-price{font-size:18px;font-weight:800;color:#e84040;margin-bottom:10px}.tp-btn{background:#1a56db;color:#fff;border:none;border-radius:8px;padding:9px;font-size:13px;font-weight:600;cursor:pointer}.tp-dots{display:flex;justify-content:center;gap:5px;padding:8px 0 10px}.td{width:7px;height:7px;border-radius:50%;background:#e5e7eb}.td.active{background:#1a56db}.cat-tabs-wrap{max-width:1320px;margin:14px auto 0;padding:0 20px}.tabs-box{background:#fff;border-radius:12px;border:1px solid #e5e7eb;overflow:hidden}.tabs-hd{display:flex;border-bottom:1px solid #e5e7eb}.tab-btn{flex:1;padding:12px 14px;background:none;border:none;font-size:13px;font-weight:600;color:#6b7280;cursor:pointer;border-bottom:3px solid transparent;transition:all .2s}.tab-btn.active{color:#1a56db;border-bottom-color:#1a56db;background:#f8f9ff}.tc{display:none;padding:14px 18px;flex-wrap:wrap;gap:8px}.tc.active{display:flex}.chip{display:inline-flex;align-items:center;gap:5px;background:#f4f5f7;border:1px solid #e5e7eb;border-radius:20px;padding:5px 13px;font-size:12px;font-weight:500;color:#374151;cursor:pointer;text-decoration:none;transition:all .15s}.chip:hover{background:#eff6ff;border-color:#1a56db;color:#1a56db}.sec{max-width:1320px;margin:28px auto 0;padding:0 20px}.sec-hd{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}.sec-t{font-size:19px;font-weight:800;color:#0f2b5b}.sec-a{color:#1a56db;font-size:13px;font-weight:600;text-decoration:none;cursor:pointer}.pgrid{display:grid;grid-template-columns:repeat(6,1fr);gap:11px}.pc{background:#fff;border-radius:10px;border:1px solid #e5e7eb;overflow:hidden;cursor:pointer;transition:box-shadow .2s,transform .2s;position:relative}.pc:hover{box-shadow:0 8px 24px rgba(0,0,0,.1);transform:translateY(-3px)}.pimg{width:100%;aspect-ratio:1;background:#f4f5f7;display:flex;align-items:center;justify-content:center;font-size:36px;position:relative}.pbdg{position:absolute;top:6px;left:6px;padding:2px 7px;border-radius:4px;font-size:9px;font-weight:700}.bt{background:#1c1c1c;color:#fff}.bs{background:#e84040;color:#fff}.bn{background:#1a56db;color:#fff}.pw{position:absolute;top:6px;right:6px;background:#fff;border:none;border-radius:50%;width:24px;height:24px;font-size:12px;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 1px 4px rgba(0,0,0,.12);opacity:0;transition:opacity .2s}.pc:hover .pw{opacity:1}.pb{padding:8px 10px 10px}.pn{font-size:11px;font-weight:600;height:28px;overflow:hidden;line-height:1.4;margin-bottom:3px}.po{font-size:10px;color:#9ca3af;margin-bottom:5px}.pp{font-size:13px;font-weight:800;color:#0f2b5b;margin-bottom:7px}.pa{width:100%;background:#1a56db;color:#fff;border:none;border-radius:6px;padding:6px 0;font-size:11px;font-weight:700;cursor:pointer}.pa:hover{background:#1447c0}footer{background:#0f2b5b;color:#cbd5e1;margin-top:44px}.fm{max-width:1320px;margin:0 auto;padding:40px 20px 32px;display:grid;grid-template-columns:1.7fr 1fr 1fr 1fr;gap:36px}.fl{font-size:24px;font-weight:800;color:#fff;margin-bottom:10px}.fl span{color:#4a9eff}.fd{font-size:13px;line-height:1.7;color:#94a3b8;margin-bottom:16px}.fs{display:flex;gap:8px}.fs a{width:32px;height:32px;background:rgba(255,255,255,.1);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;text-decoration:none}.fc h4{font-size:12px;font-weight:700;color:#fff;margin-bottom:12px;text-transform:uppercase;letter-spacing:.6px}.fc ul{list-style:none}.fc ul li{margin-bottom:8px}.fc ul li a{color:#94a3b8;text-decoration:none;font-size:13px}.fci{display:flex;gap:8px;margin-bottom:10px;font-size:13px;color:#94a3b8}.fci a{color:#94a3b8;text-decoration:none}.fhr{border:none;border-top:1px solid rgba(255,255,255,.07)}.fbt{text-align:center;padding:14px;font-size:12px;color:#64748b}.bc{max-width:1320px;margin:14px auto 0;padding:0 20px;font-size:13px;color:#6b7280}.bc a{color:#1a56db;text-decoration:none}.bc span{margin:0 5px}.cat-layout{max-width:1320px;margin:18px auto 40px;padding:0 20px;display:grid;grid-template-columns:270px 1fr;gap:20px}.filter-panel{background:#fff;border-radius:12px;border:1px solid #e5e7eb;padding:16px;align-self:start;position:sticky;top:124px}.fp-hd{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid #f3f4f6}.fp-title{font-size:15px;font-weight:800;color:#0f2b5b}.fp-clear{background:none;border:none;color:#e84040;font-size:12px;cursor:pointer;font-weight:600}.acc{border-bottom:1px solid #f3f4f6}.acc-hd{display:flex;justify-content:space-between;align-items:center;padding:12px 0;cursor:pointer;user-select:none}.acc-hd h3{font-size:13px;font-weight:700;color:#1c1c1c}.acc-ico{color:#6b7280;font-size:14px;transition:transform .2s}.acc.open .acc-ico{transform:rotate(180deg)}.acc-body{display:none;padding-bottom:12px}.acc.open .acc-body{display:block}.price-row{display:flex;gap:6px;margin-bottom:10px;align-items:center}.pi{flex:1;border:1px solid #e5e7eb;border-radius:6px;padding:6px 8px;font-size:12px;width:100%;outline:none}.ok-btn{background:#1a56db;color:#fff;border:none;border-radius:6px;padding:6px 10px;font-size:12px;font-weight:700;cursor:pointer}.rslider{width:100%;height:4px;background:#e5e7eb;border-radius:2px;position:relative;margin-top:6px}.rslider-fill{height:100%;background:#1a56db;border-radius:2px}.fi-search{width:100%;border:1px solid #e5e7eb;border-radius:6px;padding:6px 10px;font-size:12px;margin-bottom:8px;outline:none}.cb-row{display:flex;align-items:center;padding:4px 0;cursor:pointer;gap:7px}.cb-row input{accent-color:#1a56db;cursor:pointer;width:14px;height:14px;flex-shrink:0}.cb-label{font-size:12.5px;color:#374151;flex:1}.cb-cnt{font-size:11px;color:#9ca3af}.show-more{background:none;border:none;color:#1a56db;font-size:12px;cursor:pointer;font-weight:600;padding:5px 0}.products-area{}.cat-controls{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:14px}.cat-title-block h1{font-size:20px;font-weight:800;color:#0f2b5b;margin-bottom:2px}.cat-title-block p{font-size:13px;color:#6b7280}.cat-ctrl-right{display:flex;align-items:center;gap:8px}.sel{border:1px solid #e5e7eb;border-radius:6px;padding:6px 10px;font-size:13px;background:#fff;cursor:pointer;outline:none}.quick-chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}.qchip{display:inline-flex;align-items:center;gap:4px;background:#eff6ff;border:1px solid #1a56db;color:#1a56db;border-radius:20px;padding:4px 10px;font-size:11px;font-weight:600;cursor:pointer}.cgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.cc{background:#fff;border-radius:10px;border:1px solid #e5e7eb;overflow:hidden;cursor:pointer;transition:box-shadow .2s,transform .2s;position:relative}.cc:hover{box-shadow:0 8px 24px rgba(0,0,0,.1);transform:translateY(-3px)}.cimg{width:100%;aspect-ratio:1;background:#f4f5f7;display:flex;align-items:center;justify-content:center;font-size:44px;position:relative}.cbdg{position:absolute;top:7px;left:7px;padding:3px 8px;border-radius:4px;font-size:10px;font-weight:700}.cb-top{background:#1c1c1c;color:#fff}.cb-sale{background:#e84040;color:#fff}.cb-new{background:#1a56db;color:#fff}.cwish{position:absolute;top:7px;right:7px;background:#fff;border:none;border-radius:50%;width:28px;height:28px;font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 1px 4px rgba(0,0,0,.12);opacity:0;transition:opacity .2s}.cc:hover .cwish{opacity:1}.cbody{padding:10px 12px 12px}.cname{font-size:12px;font-weight:600;height:32px;overflow:hidden;line-height:1.4;margin-bottom:3px}.coem{font-size:10px;color:#9ca3af;margin-bottom:5px}.cstars{font-size:11px;color:#f59e0b;margin-bottom:5px}.cold{font-size:11px;color:#9ca3af;text-decoration:line-through;margin-bottom:1px}.cprice{font-size:14px;font-weight:800;color:#0f2b5b;margin-bottom:8px}.cprice.sale{color:#e84040}.cbtn{width:100%;background:#1a56db;color:#fff;border:none;border-radius:6px;padding:7px 0;font-size:11.5px;font-weight:700;cursor:pointer}.cbtn:hover{background:#1447c0}.pagination{display:flex;justify-content:center;align-items:center;gap:6px;margin-top:24px}.pb2{width:36px;height:36px;border:1px solid #e5e7eb;border-radius:8px;background:#fff;font-size:13px;cursor:pointer;display:flex;align-items:center;justify-content:center;color:#374151}.pb2:hover{border-color:#1a56db;color:#1a56db}.pb2.active{background:#1a56db;color:#fff;border-color:#1a56db}.parr{padding:0 12px;background:#fff;border:1px solid #e5e7eb;border-radius:8px;height:36px;font-size:13px;cursor:pointer;color:#374151;display:flex;align-items:center;gap:4px}
+/* ===== PRODUCT DETAIL PAGE ===== */
+#product-page{display:none}
+.pp-tabs{background:#fff;border-bottom:1px solid #e5e7eb;position:sticky;top:112px;z-index:50}
+.pp-tabs-in{max-width:1320px;margin:0 auto;padding:0 20px;height:46px;display:flex;align-items:center;gap:26px}
+.pp-tab{background:none;border:none;font-size:13px;font-weight:700;color:#0f2b5b;cursor:pointer;padding:5px 0;border-bottom:3px solid transparent}
+.pp-tab.active,.pp-tab:hover{border-bottom-color:#1a56db}
+.pp-wrap{max-width:1320px;margin:16px auto 0;padding:0 20px}
+.pp-h1{font-size:21px;font-weight:800;color:#0f2b5b;margin:4px 0 16px}
+.pp-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start}
+.pp-gallery{display:grid;grid-template-columns:64px 1fr;gap:10px}
+.pp-thumbs{display:flex;flex-direction:column;gap:9px}
+.pp-thumb{width:64px;height:64px;background:#fff;border:1.5px solid #e5e7eb;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:24px;cursor:pointer;transition:border-color .15s}
+.pp-thumb.active,.pp-thumb:hover{border-color:#1a56db}
+.pp-main-img{position:relative;background:#fff;border-radius:14px;border:1px solid #eef0f3;aspect-ratio:1;display:flex;align-items:center;justify-content:center;font-size:90px;box-shadow:0 4px 16px rgba(0,0,0,.04)}
+.pp-disc{position:absolute;top:12px;left:12px;background:#e84040;color:#fff;font-size:10px;font-weight:800;padding:4px 10px;border-radius:6px;letter-spacing:.5px}
+.pp-fav{position:absolute;top:12px;right:12px;width:34px;height:34px;border-radius:50%;border:none;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,.1);font-size:15px;color:#e84040;cursor:pointer}
+.pp-cmp{position:absolute;top:54px;right:12px;width:34px;height:34px;border-radius:50%;border:none;background:#eef2f7;font-size:13px;cursor:pointer}
+.pp-rate{display:flex;align-items:center;gap:10px;margin-bottom:2px}
+.pp-stars{color:#f7941d;font-size:16px;letter-spacing:1px}
+.pp-revcount{color:#9ca3af;font-size:12px}
+.pp-share{margin-left:auto;color:#1a56db;font-weight:700;font-size:12px;cursor:pointer}
+.pp-oldprice{color:#e84040;font-size:13px;text-decoration:line-through;margin-top:10px}
+.pp-price{font-size:24px;font-weight:800;color:#e84040;margin:1px 0}
+.pp-profit{color:#16a34a;font-size:12px;font-weight:600}
+.pp-specs{margin:16px 0}
+.pp-spec{display:flex;align-items:flex-end;gap:8px;font-size:13px;padding:6px 0}
+.pp-spec .k{color:#0f2b5b;font-weight:700;white-space:nowrap}
+.pp-spec .d{flex:1;border-bottom:1.5px dotted #d1d5db;margin-bottom:4px}
+.pp-spec .v{font-weight:700;white-space:nowrap}
+.pp-spec .v.blue{color:#1a56db}
+.pp-spec .v.green{color:#16a34a}
+.pp-actions{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:6px}
+.pp-cart{background:#1a56db;color:#fff;border:none;border-radius:9px;padding:12px;font-size:13px;font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:7px}
+.pp-cart:hover{background:#1447c0}
+.pp-buy{background:#0f2b5b;color:#fff;border:none;border-radius:9px;padding:12px;font-size:13px;font-weight:700;cursor:pointer}
+.pp-buy:hover{background:#0a1f43}
+.pp-vote-l{font-size:14px;font-weight:800;color:#0f2b5b;margin:16px 0 8px}
+.pp-vote{display:flex;align-items:center;border:1.5px solid #e5e7eb;border-radius:10px;padding:11px 14px;gap:10px}
+.pp-vote .ico{font-size:16px}
+.pp-vote .txt{font-size:13px;flex:1}
+.pp-vote .num{background:#dbeafe;color:#1a56db;font-weight:700;border-radius:6px;padding:4px 12px;font-size:12px}
+.pp-block{max-width:1320px;margin:24px auto 0;padding:20px;background:#fff;border:1px solid #e5e7eb;border-radius:12px}
+.pp-block-t{font-size:17px;font-weight:800;color:#0f2b5b;margin-bottom:12px}
+.pp-block-p{font-size:13px;line-height:1.75;color:#374151;margin-bottom:10px}
+.pp-feat-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 36px}
+.pp-feat-row{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid #f1f3f5;font-size:13px}
+.pp-feat-row .fk{color:#6b7280}
+.pp-feat-row .fv{font-weight:700;color:#0f2b5b}
+.pp-rev-summary{display:flex;align-items:center;gap:16px;background:#f8f9ff;border-radius:10px;padding:14px 18px;margin-bottom:14px}
+.prs-score{font-size:32px;font-weight:800;color:#0f2b5b;line-height:1}
+.pp-rev{padding:11px 0;border-bottom:1px solid #f1f3f5}
+.prv-hd{display:flex;align-items:center;gap:9px;margin-bottom:5px}
+.prv-ava{width:28px;height:28px;border-radius:50%;background:#1a56db;color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:12px}
+.prv-name{font-weight:700;color:#0f2b5b;font-size:13px}
+.prv-stars{color:#f7941d;font-size:12px;letter-spacing:1px}
+.prv-text{font-size:13px;color:#374151;line-height:1.55;margin-left:37px}
+.rel-sec{max-width:1320px;margin:32px auto 0;padding:0 20px}
+.rel-hd{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+.rel-t{font-size:18px;font-weight:800;color:#0f2b5b}
+.rel-more{background:#1a56db;color:#fff;border:none;border-radius:8px;padding:8px 16px;font-size:13px;font-weight:700;cursor:pointer}
+.rel-more:hover{background:#1447c0}
+.rel-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:11px}
+.rel-extra{display:none}
+.rel-extra.show{display:contents}
+@media(max-width:900px){.pp-grid{grid-template-columns:1fr}.rel-grid{grid-template-columns:repeat(3,1fr)}}</style>
 </head>
 <body>
 
-<!-- TICKER -->
-<div class="ticker">
-  <div class="ticker-inner">
-    <span class="ticker-item"><span>●</span> YANGILIK: Yangi Bosch seriya qismlari keldi</span>
-    <span class="ticker-item"><span>●</span> MOQ: Minimal zakaz — 5 dona</span>
-    <span class="ticker-item"><span>●</span> B2B: Do'kon egalari uchun maxsus chegirmalar</span>
-    <span class="ticker-item"><span>●</span> YETKAZIB BERISH: Toshkent bo'ylab 1 kun ichida</span>
-    <span class="ticker-item"><span>●</span> YANGI: Nexia, Malibu, Cobalt qismlari mavjud</span>
-    <span class="ticker-item"><span>●</span> CHEGIRMA: Usta va do'kon uchun 15–25% off</span>
-    <span class="ticker-item"><span>●</span> YANGILIK: Yangi Bosch seriya qismlari keldi</span>
-    <span class="ticker-item"><span>●</span> MOQ: Minimal zakaz — 5 dona</span>
-    <span class="ticker-item"><span>●</span> B2B: Do'kon egalari uchun maxsus chegirmalar</span>
-    <span class="ticker-item"><span>●</span> YETKAZIB BERISH: Toshkent bo'ylab 1 kun ichida</span>
-    <span class="ticker-item"><span>●</span> YANGI: Nexia, Malibu, Cobalt qismlari mavjud</span>
-    <span class="ticker-item"><span>●</span> CHEGIRMA: Usta va do'kon uchun 15–25% off</span>
+<!-- HEADER -->
+<header class="header">
+<div class="hm">
+  <span class="logo" onclick="showHome()">tim<span>soll</span></span>
+  <button class="cat-btn">&#9776; Kategoriyalar</button>
+  <div class="sw"><input type="text" placeholder="Mahsulot nomi yoki OEM raqami..."><button class="sb">Qidirish</button></div>
+  <div class="hicons">
+    <button class="ibt"><span class="ico">👤</span><span class="lbl">My Account</span></button>
+    <button class="ibt"><span class="ico">🛒</span><span class="bdg">0</span><span class="lbl">Savatcha</span></button>
+    <button class="ibt"><span class="ico">🔖</span><span class="lbl">Saqlangan</span></button>
   </div>
 </div>
-
-<!-- HEADER -->
-<header>
-  <div class="header-top">
-    <div class="logo-wrap">
-      <div class="logo-img">
-        <span style="font-size:1.4rem;font-weight:800;color:#fff;letter-spacing:-0.02em;font-family:var(--font)">timsoll</span>
-      </div>
-      <div>
-        <div style="font-size:9px;color:rgba(255,255,255,0.55);font-family:var(--mono);letter-spacing:0.15em;margin-top:2px">AVTOZAPCHAST</div>
-      </div>
-    </div>
-    <div class="header-search">
-      <input type="text" placeholder="Qism nomi, OEM kod, mashina modeli...">
-      <button><i class="fa fa-search"></i></button>
-    </div>
-    <div class="header-actions">
-      <div class="b2b-badge"><i class="fa fa-shield-halved"></i> B2B ONLY</div>
-      <button class="btn-sm btn-outline-w" onclick="openModal('login')"><i class="fa fa-right-to-bracket"></i> Kirish</button>
-      <button class="btn-sm btn-white" onclick="openModal('register')"><i class="fa fa-user-plus"></i> Ro'yxatdan o'tish</button>
-      <button class="btn-sm btn-outline-w cart-btn" onclick="toggleCart()">
-        <i class="fa fa-cart-shopping"></i> Korzinka
-        <span class="cart-count" id="cart-count">3</span>
-      </button>
-    </div>
-  </div>
-  <nav>
-    <div class="nav-inner">
-      <a class="nav-link active"><i class="fa fa-grip"></i> Katalog</a>
-      <div class="nav-sep"></div>
-      <a class="nav-link"><i class="fa fa-puzzle-piece"></i> Asosiy qismlar</a>
-      <a class="nav-link"><i class="fa fa-car"></i> Mashina modeli</a>
-      <a class="nav-link"><i class="fa fa-star"></i> Firmalar</a>
-      <a class="nav-link"><i class="fa fa-globe"></i> Ishlab chiqaruvchi</a>
-      <div class="nav-sep"></div>
-      <a class="nav-link"><i class="fa fa-newspaper"></i> Yangiliklar</a>
-      <a class="nav-link"><i class="fa fa-headset"></i> Aloqa</a>
-    </div>
-  </nav>
 </header>
 
+<!-- NAVBAR -->
+<nav class="navbar">
+<div class="nbi">
+  <button class="nl hot">🔥 Aksiyalar</button>
+  <button class="nl nw">🆕 Yangi tovarlar</button>
+  <span class="nsep"></span>
+  <button class="nl" onclick="showCat('Elektr tizimi')">Elektr tizimi</button>
+  <button class="nl" onclick="showCat('Fara va stoplar')">Fara va stoplar</button>
+  <button class="nl" onclick="showCat('Kuzov qismlar')">Kuzov qismlar</button>
+  <button class="nl" onclick="showCat('Plastmassalar')">Plastmassalar</button>
+  <button class="nl" onclick="showCat('Salon qismlar')">Salon qismlar</button>
+  <button class="nl" onclick="showCat('Emblema va nakleykalar')">Emblema va nakleykalar</button>
+  <button class="nl" onclick="showCat('Filterlar')">Filterlar</button>
+  <button class="nl" onclick="showCat('Klipsa va boltlar')">Klipsa va boltlar</button>
+  <button class="nl" onclick="showCat('Motor qismlar')">Motor qismlar</button>
+  <button class="nl" onclick="showCat('Salniklar')">Salniklar</button>
+  <button class="nl" onclick="showCat('Xodovoy qismlar')">Xodovoy qismlar</button>
+</div>
+</nav>
+
+<!-- ===== HOME PAGE ===== -->
+<div id="home-page">
+
 <!-- HERO -->
-<div class="hero">
-  <div class="hero-grid">
-    <div class="hero-main">
-      <div class="hero-circles"></div>
-      <div class="hero-label">// B2B AVTOZAPCHAST PLATFORMASI</div>
-      <h1 class="hero-title">PREMIUM<br>QISMLAR<br><em>— ULGUJI</em></h1>
-      <p class="hero-desc">Faqat ro'yxatdan o'tgan do'kon egalari, ustalar va B2B mijozlar uchun. Minimal zakaz — 5 dona. Rasmiy OEM va aftermarket qismlar.</p>
-      <div class="hero-stats">
-        <div class="hero-stat"><strong>48K+</strong><span>MAHSULOT</span></div>
-        <div class="hero-stat"><strong>320+</strong><span>BRAND</span></div>
-        <div class="hero-stat"><strong>1500+</strong><span>B2B MIJOZ</span></div>
+<div class="hero-wrap">
+  <div class="slider-wrap">
+    <div class="slide active" style="background:linear-gradient(135deg,#0f2b5b,#1e4a8a);">
+      <div style="position:absolute;right:40px;top:50%;transform:translateY(-50%);font-size:130px;opacity:.1;">🔧</div>
+      <div class="sc">
+        <span class="stag">✅ KAFOLAT</span>
+        <div class="stitle">Sifatga ishonch —<br><em>har bir qismda</em></div>
+        <div class="ssub">Faqat sertifikatlangan va original mahsulotlar.<br>Har bir zapchastga kafolat beramiz.</div>
+        <div class="sbtns"><button class="bp">Katalogga o'tish</button><button class="bo">Biz haqimizda →</button></div>
       </div>
     </div>
-    <div class="hero-side">
-      <div class="side-card highlight" onclick="openModal('register')">
-        <div class="side-card-label">B2B A'ZOLIK</div>
-        <div class="side-card-title">Do'kon Egasi</div>
-        <div class="side-card-sub">15–25% chegirma, kechiktirilgan to'lov</div>
-        <div class="side-card-num">01</div>
-      </div>
-      <div class="side-card" onclick="openModal('register')">
-        <div class="side-card-label">B2B A'ZOLIK</div>
-        <div class="side-card-title">Avto Usta</div>
-        <div class="side-card-sub">Texnik ma'lumotlar, TOB narxlar</div>
-        <div class="side-card-num">02</div>
-      </div>
-      <div class="side-card" onclick="openModal('register')">
-        <div class="side-card-label">B2B A'ZOLIK</div>
-        <div class="side-card-title">Distribyutor</div>
-        <div class="side-card-sub">Ommaviy zakaz, maxsus shartlar</div>
-        <div class="side-card-num">03</div>
+    <div class="slide" style="background:linear-gradient(135deg,#1a1a2e,#0f3460);">
+      <div style="position:absolute;right:40px;top:50%;transform:translateY(-50%);font-size:130px;opacity:.1;">🚗</div>
+      <div class="sc">
+        <span class="stag">📦 ASSORTIMENT</span>
+        <div class="stitle">10 000+ mahsulot —<br><em>bir joyda</em></div>
+        <div class="ssub">Nexia, Matiz, Cobalt, Tracker va boshqa<br>avtomobillar uchun ehtiyot qismlar.</div>
+        <div class="sbtns"><button class="bp">Avtomobil tanlash</button><button class="bo">Katalog →</button></div>
       </div>
     </div>
+    <div class="slide" style="background:linear-gradient(135deg,#0d3b2e,#1a5c3a);">
+      <div style="position:absolute;right:40px;top:50%;transform:translateY(-50%);font-size:130px;opacity:.1;">🚚</div>
+      <div class="sc">
+        <span class="stag">🚚 YETKAZIB BERISH</span>
+        <div class="stitle">Buyurtma bering —<br><em>2–3 kunda eshigingizda</em></div>
+        <div class="ssub">Toshkent bo'ylab tezkor yetkazib berish.<br>Kuzatib borish imkoniyati mavjud.</div>
+        <div class="sbtns"><button class="bp">Buyurtma berish</button><button class="bo">Shartlar →</button></div>
+      </div>
+    </div>
+    <button class="sarr al" onclick="chSlide(-1)">&#8249;</button>
+    <button class="sarr ar" onclick="chSlide(1)">&#8250;</button>
+    <div class="sdots"><div class="dot active" onclick="goSlide(0)"></div><div class="dot" onclick="goSlide(1)"></div><div class="dot" onclick="goSlide(2)"></div></div>
+  </div>
+  <div class="tp-box">
+    <div class="tp-lbl">⭐ TOP TOVAR</div>
+    <div class="tp-body">
+      <div class="tp-img">🔩</div>
+      <div class="tp-name">MATIZ GENERATOR REMEN timsoll</div>
+      <div class="tp-oem">OEM: 4PK954</div>
+      <div class="tp-price">12 500 uzs</div>
+      <button class="tp-btn">🛒 Xarid qilish</button>
+    </div>
+    <div class="tp-dots"><div class="td active"></div><div class="td"></div><div class="td"></div></div>
   </div>
 </div>
 
-<!-- CATEGORIES -->
-<div class="section">
-  <div class="section-header">
-    <h2 class="section-title">ASOSIY <em>KATEGORIYALAR</em></h2>
-    <span class="section-link">Hammasini ko'rish →</span>
+<!-- CATEGORY TABS -->
+<div class="cat-tabs-wrap">
+<div class="tabs-box">
+  <div class="tabs-hd">
+    <button class="tab-btn active" onclick="swTab(0)">🚗 Avtomobil bo'yicha</button>
+    <button class="tab-btn" onclick="swTab(1)">🔧 Asosiy qismlar</button>
+    <button class="tab-btn" onclick="swTab(2)">🏷️ Brend bo'yicha</button>
+    <button class="tab-btn" onclick="swTab(3)">📋 Barchasi</button>
   </div>
-  <div class="cat-grid">
-    <div class="cat-card"><div class="cat-icon">🔧</div><div class="cat-name">Motor qismlari</div><div class="cat-sub">Dvigatel, klapan, procket</div><div class="cat-count">12,400+ mahsulot</div></div>
-    <div class="cat-card"><div class="cat-icon">🛞</div><div class="cat-name">Tormoz tizimi</div><div class="cat-sub">Disk, kaliper, nakladka</div><div class="cat-count">5,200+ mahsulot</div></div>
-    <div class="cat-card"><div class="cat-icon">⚙️</div><div class="cat-name">Uzatish qutisi</div><div class="cat-sub">AKPP, MKPP, stsepleniye</div><div class="cat-count">3,800+ mahsulot</div></div>
-    <div class="cat-card"><div class="cat-icon">💡</div><div class="cat-name">Elektrika</div><div class="cat-sub">Starter, generator, sensor</div><div class="cat-count">8,100+ mahsulot</div></div>
-    <div class="cat-card"><div class="cat-icon">🚗</div><div class="cat-name">Mashina modeli</div><div class="cat-sub">Nexia, Malibu, Cobalt...</div><div class="cat-count">200+ model</div></div>
-    <div class="cat-card"><div class="cat-icon">🌍</div><div class="cat-name">Ishlab chiqaruvchi</div><div class="cat-sub">Bosch, Denso, Gates, NGK</div><div class="cat-count">320+ firma</div></div>
-    <div class="cat-card"><div class="cat-icon">🪛</div><div class="cat-name">Filtrlar</div><div class="cat-sub">Moy, havo, yoqilg'i, salon</div><div class="cat-count">4,600+ mahsulot</div></div>
-    <div class="cat-card"><div class="cat-icon">💨</div><div class="cat-name">Konditsioner</div><div class="cat-sub">Kompressor, radiator, boss</div><div class="cat-count">2,900+ mahsulot</div></div>
+  <div class="tc active" id="tc0">
+    <span class="chip">🚙 Chevrolet</span><span class="chip">🚙 Daewoo</span><span class="chip">🚙 Kia</span><span class="chip">🚙 Hyundai</span><span class="chip">🚙 Toyota</span><span class="chip">🚙 VAZ (Lada)</span><span class="chip">🚙 Volkswagen</span><span class="chip">🚙 Nexia</span><span class="chip">🚙 Matiz</span><span class="chip">🚙 Cobalt</span><span class="chip">🚙 Tracker</span><span class="chip" style="color:#1a56db;font-weight:700">Barchasini ko'rish →</span>
+  </div>
+  <div class="tc" id="tc1">
+    <span class="chip" onclick="showCat('Elektr tizimi')">⚡ Elektr tizimi</span><span class="chip" onclick="showCat('Fara va stoplar')">💡 Fara va stoplar</span><span class="chip" onclick="showCat('Kuzov qismlar')">🚗 Kuzov qismlar</span><span class="chip" onclick="showCat('Plastmassalar')">🧩 Plastmassalar</span><span class="chip" onclick="showCat('Salon qismlar')">🪑 Salon qismlar</span><span class="chip" onclick="showCat('Filterlar')">🔽 Filterlar</span><span class="chip" onclick="showCat('Klipsa va boltlar')">🔩 Klipsa va boltlar</span><span class="chip" onclick="showCat('Motor qismlar')">⚙️ Motor qismlar</span><span class="chip" onclick="showCat('Salniklar')">🛢️ Salniklar</span><span class="chip" onclick="showCat('Xodovoy qismlar')">🛞 Xodovoy qismlar</span>
+  </div>
+  <div class="tc" id="tc2">
+    <span class="chip">🏷️ timsoll</span><span class="chip">🏷️ ORIGINAL</span><span class="chip">🏷️ Korea</span><span class="chip">🏷️ Weismo (NWS)</span><span class="chip" style="color:#1a56db;font-weight:700">Barchasini ko'rish →</span>
+  </div>
+  <div class="tc" id="tc3">
+    <span class="chip" onclick="showCat('Barcha kategoriyalar')">📋 Barcha kategoriyalar →</span>
   </div>
 </div>
-
-<!-- CONTENT + SIDEBAR -->
-<div class="content-layout">
-  <aside class="sidebar">
-    <div class="sidebar-block">
-      <div class="sidebar-block-title">Mashina modeli <button>Tozalash</button></div>
-      <div class="sidebar-list">
-        <div class="sidebar-item active"><span>Chevrolet Nexia</span><span class="sidebar-count">4.2K</span></div>
-        <div class="sidebar-item"><span>Chevrolet Malibu</span><span class="sidebar-count">3.8K</span></div>
-        <div class="sidebar-item"><span>Chevrolet Cobalt</span><span class="sidebar-count">3.1K</span></div>
-        <div class="sidebar-item"><span>Chevrolet Tracker</span><span class="sidebar-count">2.4K</span></div>
-        <div class="sidebar-item"><span>Toyota Camry</span><span class="sidebar-count">2.1K</span></div>
-        <div class="sidebar-item"><span>Daewoo Matiz</span><span class="sidebar-count">1.9K</span></div>
-        <div class="sidebar-item"><span>Hyundai Accent</span><span class="sidebar-count">1.6K</span></div>
-      </div>
-    </div>
-    <div class="sidebar-block">
-      <div class="sidebar-block-title">Firma (Brand)</div>
-      <div class="sidebar-list">
-        <div class="sidebar-item"><span>Bosch</span><span class="sidebar-count">3.1K</span></div>
-        <div class="sidebar-item active"><span>Denso</span><span class="sidebar-count">2.4K</span></div>
-        <div class="sidebar-item"><span>Gates</span><span class="sidebar-count">1.8K</span></div>
-        <div class="sidebar-item"><span>NGK</span><span class="sidebar-count">1.2K</span></div>
-        <div class="sidebar-item"><span>Brembo</span><span class="sidebar-count">980</span></div>
-        <div class="sidebar-item"><span>Valeo</span><span class="sidebar-count">720</span></div>
-      </div>
-    </div>
-    <div class="sidebar-block">
-      <div class="sidebar-block-title">Ishlab chiqarish joyi</div>
-      <div class="sidebar-list">
-        <div class="sidebar-item"><span>🇯🇵 Yaponiya</span><span class="sidebar-count">8.4K</span></div>
-        <div class="sidebar-item"><span>🇩🇪 Germaniya</span><span class="sidebar-count">6.2K</span></div>
-        <div class="sidebar-item"><span>🇨🇳 Xitoy</span><span class="sidebar-count">5.8K</span></div>
-        <div class="sidebar-item"><span>🇰🇷 Koreya</span><span class="sidebar-count">3.4K</span></div>
-        <div class="sidebar-item"><span>🇺🇸 AQSh</span><span class="sidebar-count">2.1K</span></div>
-        <div class="sidebar-item"><span>🇹🇷 Turkiya</span><span class="sidebar-count">1.3K</span></div>
-      </div>
-    </div>
-  </aside>
-
-  <main>
-    <div class="filter-bar">
-      <span class="filter-label">FILTR:</span>
-      <div class="filter-tags">
-        <button class="filter-tag active">Hammasi</button>
-        <button class="filter-tag">OEM</button>
-        <button class="filter-tag">Aftermarket</button>
-        <button class="filter-tag">Premium</button>
-        <button class="filter-tag">Aksiya</button>
-      </div>
-      <div class="filter-sep"></div>
-      <select class="sort-select">
-        <option>Narx: arzondan</option>
-        <option>Narx: qimmatdan</option>
-        <option>Yangi qo'shilgan</option>
-        <option>Omborxonada</option>
-      </select>
-    </div>
-
-    <div class="products-grid">
-      <div class="prod-card">
-        <div class="prod-img"><div class="prod-img-placeholder">🔧</div><span class="prod-badge badge-new">YANGI</span><span class="prod-brand">BOSCH</span></div>
-        <div class="prod-body"><div class="prod-cat">MOTOR QISMLARI</div><div class="prod-name">Yoqilg'i injektori F00VC01376</div><div class="prod-code">OEM: 96487162</div><div class="prod-compat"><i class="fa fa-check-circle"></i> Nexia 3, Cobalt, Malibu</div></div>
-        <div class="prod-footer"><div class="prod-price"><strong>245,000 so'm</strong><span>1 dona (MOQ: 5)</span></div><span class="prod-moq">min 5x</span><button class="prod-add" onclick="addToCart(this)"><i class="fa fa-plus"></i></button></div>
-      </div>
-      <div class="prod-card">
-        <div class="prod-img"><div class="prod-img-placeholder">🛞</div><span class="prod-badge badge-top">TOP</span><span class="prod-brand">BREMBO</span></div>
-        <div class="prod-body"><div class="prod-cat">TORMOZ TIZIMI</div><div class="prod-name">Tormoz diski P09 004 oldingi</div><div class="prod-code">OEM: 96405819</div><div class="prod-compat"><i class="fa fa-check-circle"></i> Lacetti, Gentra, Aveo</div></div>
-        <div class="prod-footer"><div class="prod-price"><strong>380,000 so'm</strong><span>1 juft (MOQ: 4)</span></div><span class="prod-moq">min 4x</span><button class="prod-add" onclick="addToCart(this)"><i class="fa fa-plus"></i></button></div>
-      </div>
-      <div class="prod-card">
-        <div class="prod-img"><div class="prod-img-placeholder">💡</div><span class="prod-badge badge-sale">-20%</span><span class="prod-brand">DENSO</span></div>
-        <div class="prod-body"><div class="prod-cat">ELEKTRIKA</div><div class="prod-name">Lambda sensori (kislorod) 234-4209</div><div class="prod-code">OEM: 96418547</div><div class="prod-compat"><i class="fa fa-check-circle"></i> Spark, Matiz, Tico</div></div>
-        <div class="prod-footer"><div class="prod-price"><strong>192,000 so'm</strong><span>1 dona (MOQ: 10)</span></div><span class="prod-moq">min 10x</span><button class="prod-add" onclick="addToCart(this)"><i class="fa fa-plus"></i></button></div>
-      </div>
-      <div class="prod-card">
-        <div class="prod-img"><div class="prod-img-placeholder">⚙️</div><span class="prod-badge badge-top">OEM</span><span class="prod-brand">GATES</span></div>
-        <div class="prod-body"><div class="prod-cat">UZATISH QUTISI</div><div class="prod-name">Gaz taqsimoti kamari T43163</div><div class="prod-code">OEM: 96352791</div><div class="prod-compat"><i class="fa fa-check-circle"></i> Malibu, Optra, Lacetti</div></div>
-        <div class="prod-footer"><div class="prod-price"><strong>128,000 so'm</strong><span>1 komplekt (MOQ: 5)</span></div><span class="prod-moq">min 5x</span><button class="prod-add" onclick="addToCart(this)"><i class="fa fa-plus"></i></button></div>
-      </div>
-      <div class="prod-card">
-        <div class="prod-img"><div class="prod-img-placeholder">🪛</div><span class="prod-badge badge-sale">-15%</span><span class="prod-brand">MANN</span></div>
-        <div class="prod-body"><div class="prod-cat">FILTRLAR</div><div class="prod-name">Moy filtri W712/83 universal</div><div class="prod-code">OEM: 96879850</div><div class="prod-compat"><i class="fa fa-check-circle"></i> Universal (barcha modellar)</div></div>
-        <div class="prod-footer"><div class="prod-price"><strong>45,000 so'm</strong><span>1 dona (MOQ: 20)</span></div><span class="prod-moq">min 20x</span><button class="prod-add" onclick="addToCart(this)"><i class="fa fa-plus"></i></button></div>
-      </div>
-      <div class="prod-card">
-        <div class="prod-img"><div class="prod-img-placeholder">💨</div><span class="prod-badge badge-new">YANGI</span><span class="prod-brand">VALEO</span></div>
-        <div class="prod-body"><div class="prod-cat">KONDITSIONER</div><div class="prod-name">Kompressor 813012 Nexia 3 uchun</div><div class="prod-code">OEM: 96629744</div><div class="prod-compat"><i class="fa fa-check-circle"></i> Nexia 3 (2013–2020)</div></div>
-        <div class="prod-footer"><div class="prod-price"><strong>1,850,000 so'm</strong><span>1 dona (MOQ: 2)</span></div><span class="prod-moq">min 2x</span><button class="prod-add" onclick="addToCart(this)"><i class="fa fa-plus"></i></button></div>
-      </div>
-      <div class="prod-card">
-        <div class="prod-img"><div class="prod-img-placeholder">🔌</div><span class="prod-badge badge-top">TOP</span><span class="prod-brand">NGK</span></div>
-        <div class="prod-body"><div class="prod-cat">ELEKTRIKA</div><div class="prod-name">Sham (svecha) BKR6E-11 komplekt</div><div class="prod-code">OEM: 96418566</div><div class="prod-compat"><i class="fa fa-check-circle"></i> Aveo, Spark, Lacetti</div></div>
-        <div class="prod-footer"><div class="prod-price"><strong>72,000 so'm</strong><span>4 ta komplekt (MOQ: 5)</span></div><span class="prod-moq">min 5x</span><button class="prod-add" onclick="addToCart(this)"><i class="fa fa-plus"></i></button></div>
-      </div>
-      <div class="prod-card">
-        <div class="prod-img"><div class="prod-img-placeholder">🎛️</div><span class="prod-badge badge-new">OEM</span><span class="prod-brand">BOSCH</span></div>
-        <div class="prod-body"><div class="prod-cat">ELEKTRIKA</div><div class="prod-name">ABS sensor oldingi o'ng 0265008194</div><div class="prod-code">OEM: 95971566</div><div class="prod-compat"><i class="fa fa-check-circle"></i> Cruze, Orlando, Captiva</div></div>
-        <div class="prod-footer"><div class="prod-price"><strong>315,000 so'm</strong><span>1 dona (MOQ: 3)</span></div><span class="prod-moq">min 3x</span><button class="prod-add" onclick="addToCart(this)"><i class="fa fa-plus"></i></button></div>
-      </div>
-    </div>
-  </main>
 </div>
 
-<!-- MAGAZINE -->
-<div class="mag-section">
-  <div class="section-header">
-    <h2 class="section-title">AVTO <em>YANGILIKLARI</em></h2>
-    <span class="section-link">Barcha maqolalar →</span>
+<!-- BESTSELLERS -->
+<div class="sec">
+  <div class="sec-hd">
+    <h2 class="sec-t">🏆 Eng ko'p sotiladigan tovarlar</h2>
+    <span class="sec-a" onclick="showCat('Barcha kategoriyalar')">Barchasini ko'rish →</span>
   </div>
-  <div class="mag-grid">
-    <div class="mag-card"><div class="mag-img">📰<span class="mag-img-tag">TEXNIK</span></div><div class="mag-body"><div class="mag-meta">24 MAY 2025 · 5 DAQIQA</div><div class="mag-title">Bosch yangi injeksiya tizimi: O'zbekiston bozoriga qachon keladi?</div></div></div>
-    <div class="mag-card"><div class="mag-img">🔧<span class="mag-img-tag">QO'LLANMA</span></div><div class="mag-body"><div class="mag-meta">20 MAY 2025 · 8 DAQIQA</div><div class="mag-title">Nexia 3 tormoz kaliperi almashtirish: usta uchun bosqichma-bosqich</div></div></div>
-    <div class="mag-card"><div class="mag-img">💡<span class="mag-img-tag">BOZOR</span></div><div class="mag-body"><div class="mag-meta">17 MAY 2025 · 3 DAQIQA</div><div class="mag-title">2025 yil avtozapchast narxlari: OEM va aftermarket nima bo'ladi?</div></div></div>
+  <div class="pgrid">
+<div class="pc">
+  <div class="pimg">
+    <span class="pbdg bt">TOP</span>
+    
+    
+    <button class="pw">♡</button>
+    <span style="opacity:.22">🔩</span>
   </div>
+  <div class="pb">
+    <div class="pn">MATIZ GENERATOR REMEN</div>
+    <div class="po">OEM: 4PK954</div>
+    <div class="pp">12 500 uzs</div>
+    <button class="pa">🛒 Savatga</button>
+  </div>
+</div>
+<div class="pc">
+  <div class="pimg">
+    
+    <span class="pbdg bs">AKSIYA</span>
+    
+    <button class="pw">♡</button>
+    <span style="opacity:.22">⚙️</span>
+  </div>
+  <div class="pb">
+    <div class="pn">NEXIA SUPPORT MANJET</div>
+    <div class="po">OEM: KOS-1234</div>
+    <div class="pp">18 500 uzs</div>
+    <button class="pa">🛒 Savatga</button>
+  </div>
+</div>
+<div class="pc">
+  <div class="pimg">
+    
+    
+    
+    <button class="pw">♡</button>
+    <span style="opacity:.22">🔧</span>
+  </div>
+  <div class="pb">
+    <div class="pn">COBALT SUPPORT MANJET</div>
+    <div class="po">OEM: KOS-1251</div>
+    <div class="pp">15 000 uzs</div>
+    <button class="pa">🛒 Savatga</button>
+  </div>
+</div>
+<div class="pc">
+  <div class="pimg">
+    
+    
+    <span class="pbdg bn">YANGI</span>
+    <button class="pw">♡</button>
+    <span style="opacity:.22">🛠️</span>
+  </div>
+  <div class="pb">
+    <div class="pn">DAMAS SUPPORT MANJET</div>
+    <div class="po">OEM: KOS-1236</div>
+    <div class="pp">18 500 uzs</div>
+    <button class="pa">🛒 Savatga</button>
+  </div>
+</div>
+<div class="pc">
+  <div class="pimg">
+    <span class="pbdg bt">TOP</span>
+    
+    
+    <button class="pw">♡</button>
+    <span style="opacity:.22">🔩</span>
+  </div>
+  <div class="pb">
+    <div class="pn">SPARK GIDRAVLIKA REMEN</div>
+    <div class="po">OEM: 4PK945</div>
+    <div class="pp">13 000 uzs</div>
+    <button class="pa">🛒 Savatga</button>
+  </div>
+</div>
+<div class="pc">
+  <div class="pimg">
+    
+    
+    
+    <button class="pw">♡</button>
+    <span style="opacity:.22">⚙️</span>
+  </div>
+  <div class="pb">
+    <div class="pn">LACETTI GENERATOR REMEN</div>
+    <div class="po">OEM: 6PK1870</div>
+    <div class="pp">36 000 uzs</div>
+    <button class="pa">🛒 Savatga</button>
+  </div>
+</div>
+<div class="pc">
+  <div class="pimg">
+    <span class="pbdg bt">TOP</span>
+    
+    
+    <button class="pw">♡</button>
+    <span style="opacity:.22">🔩</span>
+  </div>
+  <div class="pb">
+    <div class="pn">TRACKER 2 GENERATOR REMEN</div>
+    <div class="po">OEM: 6PK1550</div>
+    <div class="pp">30 000 uzs</div>
+    <button class="pa">🛒 Savatga</button>
+  </div>
+</div>
+<div class="pc">
+  <div class="pimg">
+    
+    
+    
+    <button class="pw">♡</button>
+    <span style="opacity:.22">🔧</span>
+  </div>
+  <div class="pb">
+    <div class="pn">LABO GENERATOR REMEN</div>
+    <div class="po">OEM: 4PK780</div>
+    <div class="pp">7 500 uzs</div>
+    <button class="pa">🛒 Savatga</button>
+  </div>
+</div>
+<div class="pc">
+  <div class="pimg">
+    
+    <span class="pbdg bs">AKSIYA</span>
+    
+    <button class="pw">♡</button>
+    <span style="opacity:.22">🔩</span>
+  </div>
+  <div class="pb">
+    <div class="pn">MATIZ GIDRAVLIKA REMEN</div>
+    <div class="po">OEM: 4PK738</div>
+    <div class="pp">12 500 uzs</div>
+    <button class="pa">🛒 Savatga</button>
+  </div>
+</div>
+<div class="pc">
+  <div class="pimg">
+    
+    
+    
+    <button class="pw">♡</button>
+    <span style="opacity:.22">⚙️</span>
+  </div>
+  <div class="pb">
+    <div class="pn">BEST GIDRAVLIKA REMEN</div>
+    <div class="po">OEM: 4PK810</div>
+    <div class="pp">10 000 uzs</div>
+    <button class="pa">🛒 Savatga</button>
+  </div>
+</div>
+<div class="pc">
+  <div class="pimg">
+    
+    
+    <span class="pbdg bn">YANGI</span>
+    <button class="pw">♡</button>
+    <span style="opacity:.22">🛞</span>
+  </div>
+  <div class="pb">
+    <div class="pn">COBALT TORMOZ DISK</div>
+    <div class="po">OEM: BD-2251</div>
+    <div class="pp">45 000 uzs</div>
+    <button class="pa">🛒 Savatga</button>
+  </div>
+</div>
+<div class="pc">
+  <div class="pimg">
+    <span class="pbdg bt">TOP</span>
+    
+    
+    <button class="pw">♡</button>
+    <span style="opacity:.22">🔽</span>
+  </div>
+  <div class="pb">
+    <div class="pn">MATIZ YOQILGI FILTRI</div>
+    <div class="po">OEM: FF-1012</div>
+    <div class="pp">8 500 uzs</div>
+    <button class="pa">🛒 Savatga</button>
+  </div>
+</div>
+<div class="pc">
+  <div class="pimg">
+    
+    
+    
+    <button class="pw">♡</button>
+    <span style="opacity:.22">🔽</span>
+  </div>
+  <div class="pb">
+    <div class="pn">NEXIA HAVO FILTRI</div>
+    <div class="po">OEM: AF-3301</div>
+    <div class="pp">12 000 uzs</div>
+    <button class="pa">🛒 Savatga</button>
+  </div>
+</div>
+<div class="pc">
+  <div class="pimg">
+    
+    <span class="pbdg bs">AKSIYA</span>
+    
+    <button class="pw">♡</button>
+    <span style="opacity:.22">🛢️</span>
+  </div>
+  <div class="pb">
+    <div class="pn">COBALT MOY FILTRI</div>
+    <div class="po">OEM: OF-2201</div>
+    <div class="pp">9 500 uzs</div>
+    <button class="pa">🛒 Savatga</button>
+  </div>
+</div>
+<div class="pc">
+  <div class="pimg">
+    
+    
+    
+    <button class="pw">♡</button>
+    <span style="opacity:.22">🛠️</span>
+  </div>
+  <div class="pb">
+    <div class="pn">SPARK SALNIK KOMPLEKT</div>
+    <div class="po">OEM: SK-0091</div>
+    <div class="pp">22 000 uzs</div>
+    <button class="pa">🛒 Savatga</button>
+  </div>
+</div>
+<div class="pc">
+  <div class="pimg">
+    
+    
+    <span class="pbdg bn">YANGI</span>
+    <button class="pw">♡</button>
+    <span style="opacity:.22">🛞</span>
+  </div>
+  <div class="pb">
+    <div class="pn">DAMAS TORMOZ KOLODKA</div>
+    <div class="po">OEM: BP-1145</div>
+    <div class="pp">35 000 uzs</div>
+    <button class="pa">🛒 Savatga</button>
+  </div>
+</div>
+<div class="pc">
+  <div class="pimg">
+    
+    
+    
+    <button class="pw">♡</button>
+    <span style="opacity:.22">🚗</span>
+  </div>
+  <div class="pb">
+    <div class="pn">NEXIA OBLISOVKA</div>
+    <div class="po">OEM: KL-XY</div>
+    <div class="pp">230 uzs</div>
+    <button class="pa">🛒 Savatga</button>
+  </div>
+</div>
+<div class="pc">
+  <div class="pimg">
+    <span class="pbdg bt">TOP</span>
+    
+    
+    <button class="pw">♡</button>
+    <span style="opacity:.22">🔩</span>
+  </div>
+  <div class="pb">
+    <div class="pn">TRACKER AMORTIZATOR</div>
+    <div class="po">OEM: AM-5521</div>
+    <div class="pp">120 000 uzs</div>
+    <button class="pa">🛒 Savatga</button>
+  </div>
+</div></div>
 </div>
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-grid">
-    <div class="footer-brand">
-      <span class="footer-logo">timsoll®</span>
-      <p>O'zbekiston uchun B2B avtozapchast platformasi. Faqat ro'yxatdan o'tgan biznes mijozlar uchun.</p>
-    </div>
-    <div class="footer-col"><h4>Katalog</h4><a>Motor qismlari</a><a>Tormoz tizimi</a><a>Elektrika</a><a>Filtrlar</a><a>Konditsioner</a></div>
-    <div class="footer-col"><h4>B2B</h4><a>Do'kon egasi</a><a>Usta sertifikat</a><a>Distribyutor</a><a>Narx ro'yxati</a><a>Chegirmalar</a></div>
-    <div class="footer-col"><h4>Aloqa</h4><a>+998 71 000 00 00</a><a>info@timsoll.uz</a><a>Toshkent, Yunusobod</a><a>Telegram: @timsoll</a></div>
-  </div>
-  <div class="footer-bottom">
-    <p>© 2025 Timsoll. Barcha huquqlar himoyalangan.</p>
-    <p>FAQAT B2B · MOQ TALAB QILINADI</p>
-  </div>
+<div class="fm">
+  <div><div class="fl">tim<span>soll</span></div><p class="fd">Avtozapchast do'koni. Nexia, Matiz, Cobalt, Tracker va boshqa avtomobillar uchun original ehtiyot qismlar.</p><div class="fs"><a href="#">📷</a><a href="#">✈️</a><a href="#">▶️</a></div></div>
+  <div class="fc"><h4>Katalog</h4><ul><li><a href="#">Yangi tovarlar</a></li><li><a href="#">Aksiyalar</a></li><li><a href="#">Avtomobil bo'yicha</a></li><li><a href="#">Brendlar</a></li><li><a href="#">Biz haqimizda</a></li><li><a href="#">Hamkorlik</a></li><li><a href="#">Bog'lanish</a></li></ul></div>
+  <div class="fc"><h4>Mijozlar uchun</h4><ul><li><a href="#">Buyurtma berish</a></li><li><a href="#">Yetkazib berish</a></li><li><a href="#">To'lov usullari</a></li><li><a href="#">Qaytarish shartlari</a></li><li><a href="#">Kafolat</a></li></ul></div>
+  <div class="fc"><h4>Bog'lanish</h4><div class="fci"><span>📞</span><a href="#">+998 90 265-20-00</a></div><div class="fci"><span>✉️</span><a href="#">info@timsoll.uz</a></div><div class="fci"><span>📍</span><span>Toshkent, O'zbekiston</span></div><div class="fci"><span>⏰</span><span>Du–Sh: 09:00–18:00</span></div></div>
+</div>
+<hr class="fhr"><div class="fbt">© 2026 Timsoll Avto Zapchast. Barcha huquqlar himoyalangan.</div>
 </footer>
+</div>
 
-<!-- MODAL -->
-<div class="modal-overlay" id="modal">
-  <div class="modal">
-    <button class="modal-close" onclick="closeModal()"><i class="fa fa-xmark"></i></button>
-    <div class="modal-logo"><div class="modal-logo-box">timsoll</div></div>
-    <div class="modal-sub">B2B avtozapchast platformasi</div>
-    <div class="modal-tabs">
-      <div class="modal-tab active" id="tab-login" onclick="switchTab('login')">Kirish</div>
-      <div class="modal-tab" id="tab-register" onclick="switchTab('register')">Ro'yxatdan o'tish</div>
-    </div>
-    <div id="login-form">
-      <div class="form-group"><label class="form-label">Telefon raqam</label><input class="form-input" type="tel" placeholder="+998 90 000 00 00"></div>
-      <div class="form-group"><label class="form-label">Parol</label><input class="form-input" type="password" placeholder="••••••••"></div>
-      <button class="btn-block" onclick="handleLogin()">Kirish →</button>
-    </div>
-    <div id="register-form" style="display:none">
-      <div class="b2b-notice"><i class="fa fa-triangle-exclamation"></i><div>Ushbu platforma <strong>FAQAT B2B mijozlar</strong> uchun. Biznes kategoriyangizni tasdiqlashingiz kerak.</div></div>
-      <div class="form-group">
-        <label class="form-label">Biznes kategoriyasi</label>
-        <div class="category-options">
-          <div class="cat-option selected" onclick="selectCat(this)"><i class="fa fa-store"></i><span>Do'kon egasi</span></div>
-          <div class="cat-option" onclick="selectCat(this)"><i class="fa fa-wrench"></i><span>Avto Usta</span></div>
-          <div class="cat-option" onclick="selectCat(this)"><i class="fa fa-truck"></i><span>Distribyutor</span></div>
+<!-- ===== CATEGORY PAGE ===== -->
+<div id="cat-page">
+<div class="bc"><a href="#" onclick="showHome()">Bosh sahifa</a><span>›</span><a href="#" onclick="showHome()">Katalog</a><span>›</span><span id="cat-name-bc">Fara va stoplar</span></div>
+<div class="cat-layout">
+  <!-- FILTER PANEL -->
+  <div class="filter-panel">
+    <div class="fp-hd"><span class="fp-title">🔧 Filtrlar</span><button class="fp-clear" onclick="clearFilters()">Tozalash</button></div>
+
+    <!-- Narx -->
+    <div class="acc open">
+      <div class="acc-hd" onclick="toggleAcc(this)"><h3>Narxi</h3><span class="acc-ico">▼</span></div>
+      <div class="acc-body">
+        <div class="price-row">
+          <input class="pi" type="text" placeholder="Dan" value="12 000">
+          <input class="pi" type="text" placeholder="Gacha" value="500 000">
+          <button class="ok-btn">OK</button>
         </div>
-        <div class="form-note"><strong>Eslatma:</strong> Shaxsiy haydovchilar ro'yxatdan o'ta olmaydi.</div>
+        <div class="rslider"><div class="rslider-fill" style="width:60%;margin-left:5%"></div></div>
       </div>
-      <div class="form-group"><label class="form-label">Kompaniya / Do'kon nomi</label><input class="form-input" type="text" placeholder="Masalan: Avtomar Servis"></div>
-      <div class="form-group"><label class="form-label">STIR (Soliq ID)</label><input class="form-input" type="text" placeholder="000000000"><div class="form-note">STIR orqali B2B tasdiqlash amalga oshiriladi</div></div>
-      <div class="form-group"><label class="form-label">Telefon raqam</label><input class="form-input" type="tel" placeholder="+998 90 000 00 00"></div>
-      <div class="form-group"><label class="form-label">Parol</label><input class="form-input" type="password" placeholder="Kamida 8 ta belgi"></div>
-      <button class="btn-block" onclick="handleRegister()">Arizani yuborish →</button>
-      <div class="form-note" style="text-align:center;margin-top:0.75rem">Ariza ko'rib chiqilgach (1–2 ish kuni), SMS orqali xabardor qilinasiz</div>
+    </div>
+
+    <!-- Avtomobil -->
+    <div class="acc open">
+      <div class="acc-hd" onclick="toggleAcc(this)"><h3>Avtomobil bo'yicha</h3><span class="acc-ico">▼</span></div>
+      <div class="acc-body">
+        <input class="fi-search" type="text" placeholder="Qidirish...">
+        <label class="cb-row"><input type="checkbox" checked> <span class="cb-label">Chevrolet Nexia</span><span class="cb-cnt">(186)</span></label>
+        <label class="cb-row"><input type="checkbox"> <span class="cb-label">Chevrolet Matiz</span><span class="cb-cnt">(145)</span></label>
+        <label class="cb-row"><input type="checkbox"> <span class="cb-label">Chevrolet Cobalt</span><span class="cb-cnt">(132)</span></label>
+        <label class="cb-row"><input type="checkbox"> <span class="cb-label">Chevrolet Tracker</span><span class="cb-cnt">(98)</span></label>
+        <label class="cb-row"><input type="checkbox"> <span class="cb-label">Daewoo Nexia</span><span class="cb-cnt">(76)</span></label>
+        <label class="cb-row"><input type="checkbox"> <span class="cb-label">Daewoo Matiz</span><span class="cb-cnt">(54)</span></label>
+        <label class="cb-row"><input type="checkbox"> <span class="cb-label">Kia</span><span class="cb-cnt">(42)</span></label>
+        <button class="show-more">Ko'proq ko'rish ↓</button>
+      </div>
+    </div>
+
+    <!-- Qism turi -->
+    <div class="acc open">
+      <div class="acc-hd" onclick="toggleAcc(this)"><h3>Asosiy qismlar</h3><span class="acc-ico">▼</span></div>
+      <div class="acc-body">
+        <label class="cb-row"><input type="checkbox" checked> <span class="cb-label">Fara va stoplar</span><span class="cb-cnt">(355)</span></label>
+        <label class="cb-row"><input type="checkbox"> <span class="cb-label">Elektr tizimi</span><span class="cb-cnt">(210)</span></label>
+        <label class="cb-row"><input type="checkbox"> <span class="cb-label">Kuzov qismlar</span><span class="cb-cnt">(198)</span></label>
+        <label class="cb-row"><input type="checkbox"> <span class="cb-label">Plastmassalar</span><span class="cb-cnt">(143)</span></label>
+        <label class="cb-row"><input type="checkbox"> <span class="cb-label">Salon qismlar</span><span class="cb-cnt">(112)</span></label>
+        <label class="cb-row"><input type="checkbox"> <span class="cb-label">Filterlar</span><span class="cb-cnt">(89)</span></label>
+        <label class="cb-row"><input type="checkbox"> <span class="cb-label">Motor qismlar</span><span class="cb-cnt">(76)</span></label>
+        <label class="cb-row"><input type="checkbox"> <span class="cb-label">Salniklar</span><span class="cb-cnt">(54)</span></label>
+        <label class="cb-row"><input type="checkbox"> <span class="cb-label">Xodovoy qismlar</span><span class="cb-cnt">(48)</span></label>
+      </div>
+    </div>
+
+    <!-- Brend -->
+    <div class="acc open">
+      <div class="acc-hd" onclick="toggleAcc(this)"><h3>Brend</h3><span class="acc-ico">▼</span></div>
+      <div class="acc-body">
+        <input class="fi-search" type="text" placeholder="Qidirish...">
+        <label class="cb-row"><input type="checkbox" checked> <span class="cb-label">timsoll</span><span class="cb-cnt">(245)</span></label>
+        <label class="cb-row"><input type="checkbox"> <span class="cb-label">ORIGINAL</span><span class="cb-cnt">(180)</span></label>
+        <label class="cb-row"><input type="checkbox"> <span class="cb-label">Korea</span><span class="cb-cnt">(92)</span></label>
+        <label class="cb-row"><input type="checkbox"> <span class="cb-label">Weismo (NWS)</span><span class="cb-cnt">(67)</span></label>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRODUCTS AREA -->
+  <div class="products-area">
+    <div class="cat-controls">
+      <div class="cat-title-block">
+        <h1 id="cat-name-title">Fara va stoplar</h1>
+        <p>355 ta mahsulot topildi</p>
+      </div>
+      <div class="cat-ctrl-right">
+        <select class="sel"><option>24 ta</option><option>48 ta</option><option>96 ta</option></select>
+        <select class="sel"><option>Ommabop</option><option>Narxi ↑</option><option>Narxi ↓</option><option>Yangi</option><option>Reyting</option></select>
+      </div>
+    </div>
+    <div class="quick-chips">
+      <span class="qchip">Chevrolet Nexia <span class="x">×</span></span>
+      <span class="qchip">timsoll <span class="x">×</span></span>
+      <span class="qchip" style="background:#fff0f0;border-color:#e84040;color:#e84040">Barchasini tozalash</span>
+    </div>
+    <div class="cgrid">
+<div class="cc">
+  <div class="cimg">
+    <span class="cbdg cb-top">TOP</span>
+    
+    
+    <button class="cwish">♡</button>
+    <span style="opacity:.22">🔩</span>
+  </div>
+  <div class="cbody">
+    <div class="cname">MATIZ GENERATOR REMEN</div>
+    <div class="coem">OEM: 4PK954</div>
+    <div class="cstars">★★★★☆ <span style="color:#9ca3af">(5)</span></div>
+    
+    <div class="cprice">12 500 uzs</div>
+    <button class="cbtn">🛒 Savatga</button>
+  </div>
+</div>
+<div class="cc">
+  <div class="cimg">
+    
+    <span class="cbdg cb-sale">CHEGIRMA</span>
+    
+    <button class="cwish">♡</button>
+    <span style="opacity:.22">⚙️</span>
+  </div>
+  <div class="cbody">
+    <div class="cname">NEXIA SUPPORT MANJET</div>
+    <div class="coem">OEM: KOS-1234</div>
+    <div class="cstars">★★★★☆ <span style="color:#9ca3af">(9)</span></div>
+    <div class="cold">23 000 uzs</div>
+    <div class="cprice sale">18 500 uzs</div>
+    <button class="cbtn">🛒 Savatga</button>
+  </div>
+</div>
+<div class="cc">
+  <div class="cimg">
+    
+    
+    
+    <button class="cwish">♡</button>
+    <span style="opacity:.22">🔧</span>
+  </div>
+  <div class="cbody">
+    <div class="cname">COBALT SUPPORT MANJET</div>
+    <div class="coem">OEM: KOS-1251</div>
+    <div class="cstars">★★★★☆ <span style="color:#9ca3af">(11)</span></div>
+    
+    <div class="cprice">15 000 uzs</div>
+    <button class="cbtn">🛒 Savatga</button>
+  </div>
+</div>
+<div class="cc">
+  <div class="cimg">
+    
+    
+    <span class="cbdg cb-new">YANGI</span>
+    <button class="cwish">♡</button>
+    <span style="opacity:.22">🛠️</span>
+  </div>
+  <div class="cbody">
+    <div class="cname">DAMAS SUPPORT MANJET</div>
+    <div class="coem">OEM: KOS-1236</div>
+    <div class="cstars">★★★★☆ <span style="color:#9ca3af">(15)</span></div>
+    
+    <div class="cprice">18 500 uzs</div>
+    <button class="cbtn">🛒 Savatga</button>
+  </div>
+</div>
+<div class="cc">
+  <div class="cimg">
+    <span class="cbdg cb-top">TOP</span>
+    
+    
+    <button class="cwish">♡</button>
+    <span style="opacity:.22">🔩</span>
+  </div>
+  <div class="cbody">
+    <div class="cname">SPARK GIDRAVLIKA REMEN</div>
+    <div class="coem">OEM: 4PK945</div>
+    <div class="cstars">★★★★☆ <span style="color:#9ca3af">(18)</span></div>
+    
+    <div class="cprice">13 000 uzs</div>
+    <button class="cbtn">🛒 Savatga</button>
+  </div>
+</div>
+<div class="cc">
+  <div class="cimg">
+    
+    
+    
+    <button class="cwish">♡</button>
+    <span style="opacity:.22">⚙️</span>
+  </div>
+  <div class="cbody">
+    <div class="cname">LACETTI GENERATOR REMEN</div>
+    <div class="coem">OEM: 6PK1870</div>
+    <div class="cstars">★★★★☆ <span style="color:#9ca3af">(17)</span></div>
+    
+    <div class="cprice">36 000 uzs</div>
+    <button class="cbtn">🛒 Savatga</button>
+  </div>
+</div>
+<div class="cc">
+  <div class="cimg">
+    <span class="cbdg cb-top">TOP</span>
+    
+    
+    <button class="cwish">♡</button>
+    <span style="opacity:.22">🔩</span>
+  </div>
+  <div class="cbody">
+    <div class="cname">TRACKER 2 GENERATOR REMEN</div>
+    <div class="coem">OEM: 6PK1550</div>
+    <div class="cstars">★★★★☆ <span style="color:#9ca3af">(16)</span></div>
+    
+    <div class="cprice">30 000 uzs</div>
+    <button class="cbtn">🛒 Savatga</button>
+  </div>
+</div>
+<div class="cc">
+  <div class="cimg">
+    
+    
+    
+    <button class="cwish">♡</button>
+    <span style="opacity:.22">🔧</span>
+  </div>
+  <div class="cbody">
+    <div class="cname">LABO GENERATOR REMEN</div>
+    <div class="coem">OEM: 4PK780</div>
+    <div class="cstars">★★★★☆ <span style="color:#9ca3af">(4)</span></div>
+    
+    <div class="cprice">7 500 uzs</div>
+    <button class="cbtn">🛒 Savatga</button>
+  </div>
+</div>
+<div class="cc">
+  <div class="cimg">
+    
+    <span class="cbdg cb-sale">CHEGIRMA</span>
+    
+    <button class="cwish">♡</button>
+    <span style="opacity:.22">🔩</span>
+  </div>
+  <div class="cbody">
+    <div class="cname">MATIZ GIDRAVLIKA REMEN</div>
+    <div class="coem">OEM: 4PK738</div>
+    <div class="cstars">★★★★☆ <span style="color:#9ca3af">(7)</span></div>
+    <div class="cold">16 000 uzs</div>
+    <div class="cprice sale">12 500 uzs</div>
+    <button class="cbtn">🛒 Savatga</button>
+  </div>
+</div>
+<div class="cc">
+  <div class="cimg">
+    
+    
+    
+    <button class="cwish">♡</button>
+    <span style="opacity:.22">⚙️</span>
+  </div>
+  <div class="cbody">
+    <div class="cname">BEST GIDRAVLIKA REMEN</div>
+    <div class="coem">OEM: 4PK810</div>
+    <div class="cstars">★★★★☆ <span style="color:#9ca3af">(2)</span></div>
+    
+    <div class="cprice">10 000 uzs</div>
+    <button class="cbtn">🛒 Savatga</button>
+  </div>
+</div>
+<div class="cc">
+  <div class="cimg">
+    
+    
+    <span class="cbdg cb-new">YANGI</span>
+    <button class="cwish">♡</button>
+    <span style="opacity:.22">🛞</span>
+  </div>
+  <div class="cbody">
+    <div class="cname">COBALT TORMOZ DISK</div>
+    <div class="coem">OEM: BD-2251</div>
+    <div class="cstars">★★★★☆ <span style="color:#9ca3af">(10)</span></div>
+    
+    <div class="cprice">45 000 uzs</div>
+    <button class="cbtn">🛒 Savatga</button>
+  </div>
+</div>
+<div class="cc">
+  <div class="cimg">
+    <span class="cbdg cb-top">TOP</span>
+    
+    
+    <button class="cwish">♡</button>
+    <span style="opacity:.22">🔽</span>
+  </div>
+  <div class="cbody">
+    <div class="cname">MATIZ YOQILGI FILTRI</div>
+    <div class="coem">OEM: FF-1012</div>
+    <div class="cstars">★★★★☆ <span style="color:#9ca3af">(4)</span></div>
+    
+    <div class="cprice">8 500 uzs</div>
+    <button class="cbtn">🛒 Savatga</button>
+  </div>
+</div>
+<div class="cc">
+  <div class="cimg">
+    
+    
+    
+    <button class="cwish">♡</button>
+    <span style="opacity:.22">🔽</span>
+  </div>
+  <div class="cbody">
+    <div class="cname">NEXIA HAVO FILTRI</div>
+    <div class="coem">OEM: AF-3301</div>
+    <div class="cstars">★★★★☆ <span style="color:#9ca3af">(14)</span></div>
+    
+    <div class="cprice">12 000 uzs</div>
+    <button class="cbtn">🛒 Savatga</button>
+  </div>
+</div>
+<div class="cc">
+  <div class="cimg">
+    
+    <span class="cbdg cb-sale">CHEGIRMA</span>
+    
+    <button class="cwish">♡</button>
+    <span style="opacity:.22">🛢️</span>
+  </div>
+  <div class="cbody">
+    <div class="cname">COBALT MOY FILTRI</div>
+    <div class="coem">OEM: OF-2201</div>
+    <div class="cstars">★★★★☆ <span style="color:#9ca3af">(6)</span></div>
+    <div class="cold">13 000 uzs</div>
+    <div class="cprice sale">9 500 uzs</div>
+    <button class="cbtn">🛒 Savatga</button>
+  </div>
+</div>
+<div class="cc">
+  <div class="cimg">
+    
+    
+    
+    <button class="cwish">♡</button>
+    <span style="opacity:.22">🛠️</span>
+  </div>
+  <div class="cbody">
+    <div class="cname">SPARK SALNIK KOMPLEKT</div>
+    <div class="coem">OEM: SK-0091</div>
+    <div class="cstars">★★★★☆ <span style="color:#9ca3af">(6)</span></div>
+    
+    <div class="cprice">22 000 uzs</div>
+    <button class="cbtn">🛒 Savatga</button>
+  </div>
+</div>
+<div class="cc">
+  <div class="cimg">
+    
+    
+    <span class="cbdg cb-new">YANGI</span>
+    <button class="cwish">♡</button>
+    <span style="opacity:.22">🛞</span>
+  </div>
+  <div class="cbody">
+    <div class="cname">DAMAS TORMOZ KOLODKA</div>
+    <div class="coem">OEM: BP-1145</div>
+    <div class="cstars">★★★★☆ <span style="color:#9ca3af">(15)</span></div>
+    
+    <div class="cprice">35 000 uzs</div>
+    <button class="cbtn">🛒 Savatga</button>
+  </div>
+</div>
+<div class="cc">
+  <div class="cimg">
+    
+    
+    
+    <button class="cwish">♡</button>
+    <span style="opacity:.22">🚗</span>
+  </div>
+  <div class="cbody">
+    <div class="cname">NEXIA OBLISOVKA</div>
+    <div class="coem">OEM: KL-XY</div>
+    <div class="cstars">★★★★☆ <span style="color:#9ca3af">(16)</span></div>
+    
+    <div class="cprice">230 uzs</div>
+    <button class="cbtn">🛒 Savatga</button>
+  </div>
+</div>
+<div class="cc">
+  <div class="cimg">
+    <span class="cbdg cb-top">TOP</span>
+    
+    
+    <button class="cwish">♡</button>
+    <span style="opacity:.22">🔩</span>
+  </div>
+  <div class="cbody">
+    <div class="cname">TRACKER AMORTIZATOR</div>
+    <div class="coem">OEM: AM-5521</div>
+    <div class="cstars">★★★★☆ <span style="color:#9ca3af">(18)</span></div>
+    
+    <div class="cprice">120 000 uzs</div>
+    <button class="cbtn">🛒 Savatga</button>
+  </div>
+</div>
+<div class="cc">
+  <div class="cimg">
+    
+    <span class="cbdg cb-sale">CHEGIRMA</span>
+    
+    <button class="cwish">♡</button>
+    <span style="opacity:.22">💡</span>
+  </div>
+  <div class="cbody">
+    <div class="cname">COBALT FARA TO'PLAMI</div>
+    <div class="coem">OEM: FL-2201</div>
+    <div class="cstars">★★★★☆ <span style="color:#9ca3af">(16)</span></div>
+    <div class="cold">105 000 uzs</div>
+    <div class="cprice sale">85 000 uzs</div>
+    <button class="cbtn">🛒 Savatga</button>
+  </div>
+</div>
+<div class="cc">
+  <div class="cimg">
+    
+    
+    
+    <button class="cwish">♡</button>
+    <span style="opacity:.22">💡</span>
+  </div>
+  <div class="cbody">
+    <div class="cname">MATIZ STOP FONARI</div>
+    <div class="coem">OEM: SL-1012</div>
+    <div class="cstars">★★★★☆ <span style="color:#9ca3af">(9)</span></div>
+    
+    <div class="cprice">32 000 uzs</div>
+    <button class="cbtn">🛒 Savatga</button>
+  </div>
+</div>
+<div class="cc">
+  <div class="cimg">
+    
+    
+    <span class="cbdg cb-new">YANGI</span>
+    <button class="cwish">♡</button>
+    <span style="opacity:.22">🚗</span>
+  </div>
+  <div class="cbody">
+    <div class="cname">NEXIA BAMPER OLDI</div>
+    <div class="coem">OEM: BP-3301</div>
+    <div class="cstars">★★★★☆ <span style="color:#9ca3af">(17)</span></div>
+    
+    <div class="cprice">95 000 uzs</div>
+    <button class="cbtn">🛒 Savatga</button>
+  </div>
+</div>
+<div class="cc">
+  <div class="cimg">
+    <span class="cbdg cb-top">TOP</span>
+    
+    
+    <button class="cwish">♡</button>
+    <span style="opacity:.22">🌡️</span>
+  </div>
+  <div class="cbody">
+    <div class="cname">COBALT RADIATOR</div>
+    <div class="coem">OEM: RD-4451</div>
+    <div class="cstars">★★★★☆ <span style="color:#9ca3af">(2)</span></div>
+    
+    <div class="cprice">180 000 uzs</div>
+    <button class="cbtn">🛒 Savatga</button>
+  </div>
+</div>
+<div class="cc">
+  <div class="cimg">
+    
+    
+    
+    <button class="cwish">♡</button>
+    <span style="opacity:.22">🔽</span>
+  </div>
+  <div class="cbody">
+    <div class="cname">MATIZ FILTR TO'PLAMI</div>
+    <div class="coem">OEM: FT-0011</div>
+    <div class="cstars">★★★★☆ <span style="color:#9ca3af">(13)</span></div>
+    
+    <div class="cprice">28 000 uzs</div>
+    <button class="cbtn">🛒 Savatga</button>
+  </div>
+</div>
+<div class="cc">
+  <div class="cimg">
+    
+    
+    
+    <button class="cwish">♡</button>
+    <span style="opacity:.22">💨</span>
+  </div>
+  <div class="cbody">
+    <div class="cname">TRACKER SALON FILTER</div>
+    <div class="coem">OEM: SF-5521</div>
+    <div class="cstars">★★★★☆ <span style="color:#9ca3af">(10)</span></div>
+    
+    <div class="cprice">14 500 uzs</div>
+    <button class="cbtn">🛒 Savatga</button>
+  </div>
+</div></div>
+    <div class="pagination">
+      <button class="parr">← Oldingi</button>
+      <button class="pb2 active">1</button>
+      <button class="pb2">2</button>
+      <button class="pb2">3</button>
+      <span style="padding:0 4px;color:#9ca3af">...</span>
+      <button class="pb2">15</button>
+      <button class="parr">Keyingi →</button>
     </div>
   </div>
 </div>
 
-<!-- CART -->
-<div class="cart-panel" id="cart-panel">
-  <div class="cart-header">
-    <h3>KORZINKA</h3>
-    <button class="btn-sm btn-outline-w" onclick="toggleCart()" style="padding:6px 12px"><i class="fa fa-xmark"></i></button>
-  </div>
-  <div class="cart-items">
-    <div class="cart-item"><div class="cart-item-img">🔧</div><div class="cart-item-info"><div class="cart-item-name">Yoqilg'i injektori F00VC01376</div><div style="font-size:10px;color:var(--text3);font-weight:600">BOSCH · OEM</div><div class="cart-item-qty"><button class="qty-btn">−</button><span class="qty-val">5</span><button class="qty-btn">+</button></div></div><div class="cart-item-price">1,225,000 s</div></div>
-    <div class="cart-item"><div class="cart-item-img">🛞</div><div class="cart-item-info"><div class="cart-item-name">Tormoz diski P09 004</div><div style="font-size:10px;color:var(--text3);font-weight:600">BREMBO · Premium</div><div class="cart-item-qty"><button class="qty-btn">−</button><span class="qty-val">4</span><button class="qty-btn">+</button></div></div><div class="cart-item-price">1,520,000 s</div></div>
-    <div class="cart-item"><div class="cart-item-img">💡</div><div class="cart-item-info"><div class="cart-item-name">Lambda sensori 234-4209</div><div style="font-size:10px;color:var(--text3);font-weight:600">DENSO · Aftermarket</div><div class="cart-item-qty"><button class="qty-btn">−</button><span class="qty-val">10</span><button class="qty-btn">+</button></div></div><div class="cart-item-price">1,920,000 s</div></div>
-  </div>
-  <div class="cart-footer">
-    <div class="cart-total"><span class="cart-total-label">Jami:</span><span class="cart-total-val">4,665,000 so'm</span></div>
-    <div class="cart-note"><strong>Eslatma:</strong> Zakaz sotuvchiga tushadi va ular siz bilan aloqaga chiqib tasdiqlaydi.</div>
-    <button class="btn-block" onclick="handleOrder()">Zakaz berish →</button>
-  </div>
+<footer>
+<div class="fm">
+  <div><div class="fl">tim<span>soll</span></div><p class="fd">Avtozapchast do'koni. Original ehtiyot qismlar.</p><div class="fs"><a href="#">📷</a><a href="#">✈️</a><a href="#">▶️</a></div></div>
+  <div class="fc"><h4>Katalog</h4><ul><li><a href="#">Yangi tovarlar</a></li><li><a href="#">Aksiyalar</a></li><li><a href="#">Biz haqimizda</a></li></ul></div>
+  <div class="fc"><h4>Mijozlar uchun</h4><ul><li><a href="#">Buyurtma berish</a></li><li><a href="#">Yetkazib berish</a></li><li><a href="#">Kafolat</a></li></ul></div>
+  <div class="fc"><h4>Bog'lanish</h4><div class="fci"><span>📞</span><a href="#">+998 90 265-20-00</a></div><div class="fci"><span>✉️</span><a href="#">info@timsoll.uz</a></div></div>
+</div>
+<hr class="fhr"><div class="fbt">© 2026 Timsoll Avto Zapchast. Barcha huquqlar himoyalangan.</div>
+</footer>
 </div>
 
-<!-- TOAST -->
-<div class="toast" id="toast"><i class="fa fa-circle-check"></i> <span id="toast-msg">Korzinkaga qo'shildi!</span></div>
+<!-- ===== PRODUCT DETAIL PAGE ===== -->
+<div id="product-page">
+  <div class="bc" style="margin-top:14px"><a href="#" onclick="showHome();return false;">Bosh sahifa</a><span>›</span><a href="#" onclick="showHome();return false;">Katalog</a><span>›</span><span id="pd-bc">Mahsulot</span></div>
+
+  <!-- anchor tabs -->
+  <div class="pp-tabs">
+    <div class="pp-tabs-in">
+      <button class="pp-tab active" onclick="ppTab(this,'sec-top')">Mahsulot</button>
+      <button class="pp-tab" onclick="ppTab(this,'sec-desc')">Mahsulot ta'rifi</button>
+      <button class="pp-tab" onclick="ppTab(this,'sec-feat')">Xususiyatlar</button>
+      <button class="pp-tab" onclick="ppTab(this,'sec-rev')">Sharhlar</button>
+    </div>
+  </div>
+
+  <div class="pp-wrap">
+    <h1 class="pp-h1" id="pd-title">Mahsulot nomi</h1>
+    <div class="pp-grid" id="sec-top">
+      <!-- LEFT: gallery -->
+      <div class="pp-gallery">
+        <div class="pp-thumbs">
+          <div class="pp-thumb active" id="pd-emoji-thumb">🔩</div>
+          <div class="pp-thumb">📦</div>
+          <div class="pp-thumb">⚙️</div>
+          <div class="pp-thumb">🔧</div>
+        </div>
+        <div class="pp-main-img">
+          <span class="pp-disc">CHEGIRMA</span>
+          <button class="pp-fav">♡</button>
+          <button class="pp-cmp">⚖</button>
+          <span id="pd-emoji" style="opacity:.85">🔩</span>
+        </div>
+      </div>
+
+      <!-- RIGHT: info -->
+      <div>
+        <div class="pp-rate">
+          <span class="pp-stars">★★★★☆</span>
+          <span class="pp-revcount" id="pd-reviews">6 ta sharh</span>
+          <span class="pp-share">⤴ Ulashish</span>
+        </div>
+        <div class="pp-oldprice" id="pd-oldprice">18 500 uzs</div>
+        <div class="pp-price" id="pd-price">12 500 uzs</div>
+        <div class="pp-profit" id="pd-profit">Tejaysiz 6 000 uzs</div>
+
+        <div class="pp-specs">
+          <div class="pp-spec"><span class="k">Brend:</span><span class="d"></span><span class="v blue" id="pd-brand">timsoll</span></div>
+          <div class="pp-spec"><span class="k">Mashina turi:</span><span class="d"></span><span class="v blue" id="pd-car">Cobalt</span></div>
+          <div class="pp-spec"><span class="k">Asosiy qism:</span><span class="d"></span><span class="v blue" id="pd-part">Motor qism</span></div>
+          <div class="pp-spec"><span class="k">OEM raqami:</span><span class="d"></span><span class="v" id="pd-oem">4PK954</span></div>
+          <div class="pp-spec"><span class="k">Holati:</span><span class="d"></span><span class="v green">● Sotuvda bor</span></div>
+        </div>
+
+        <div class="pp-actions">
+          <button class="pp-cart">🛒 Savatchaga qo'shish</button>
+          <button class="pp-buy">Hoziroq xarid qilish</button>
+        </div>
+
+        <div class="pp-vote-l">Ovoz bering:</div>
+        <div class="pp-vote">
+          <span class="ico">👍</span>
+          <span class="txt">Tavsiya qilaman</span>
+          <span class="num">8</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- RELATED PRODUCTS -->
+    <div class="rel-sec">
+      <div class="rel-hd">
+        <span class="rel-t">🔗 Shunga o'xshash mahsulotlar</span>
+        <button class="rel-more" id="rel-more-btn" onclick="toggleRelated()">Ko'proq →</button>
+      </div>
+      <div class="rel-grid" id="rel-grid"></div>
+    </div>
+
+    <!-- DESCRIPTION -->
+    <div class="pp-block" id="sec-desc">
+      <h2 class="pp-block-t">Mahsulot ta'rifi</h2>
+      <p class="pp-block-p" id="pd-desc-text">Ushbu ehtiyot qism original sifat standartlariga muvofiq ishlab chiqarilgan bo'lib, avtomobilingizning uzoq va ishonchli xizmat qilishini ta'minlaydi. Yuqori chidamli materiallardan tayyorlangan, zavod talablariga to'liq mos keladi va o'rnatish oson.</p>
+      <p class="pp-block-p">timsoll do'koni faqat tekshirilgan va kafolatlangan mahsulotlarni taklif etadi. Buyurtmani O'zbekiston bo'ylab yetkazib beramiz. Savollar bo'lsa, menejerlarimiz bilan bog'laning.</p>
+    </div>
+
+    <!-- FEATURES -->
+    <div class="pp-block" id="sec-feat">
+      <h2 class="pp-block-t">Xususiyatlar</h2>
+      <div class="pp-feat-grid">
+        <div class="pp-feat-row"><span class="fk">Brend</span><span class="fv">timsoll</span></div>
+        <div class="pp-feat-row"><span class="fk">Mashina turi</span><span class="fv">Cobalt</span></div>
+        <div class="pp-feat-row"><span class="fk">Asosiy qism</span><span class="fv">Motor qism</span></div>
+        <div class="pp-feat-row"><span class="fk">OEM raqami</span><span class="fv" id="pd-oem2">4PK954</span></div>
+        <div class="pp-feat-row"><span class="fk">Material</span><span class="fv">Yuqori chidamli</span></div>
+        <div class="pp-feat-row"><span class="fk">Kafolat</span><span class="fv">6 oy</span></div>
+        <div class="pp-feat-row"><span class="fk">Ishlab chiqaruvchi</span><span class="fv">Original</span></div>
+        <div class="pp-feat-row"><span class="fk">Holati</span><span class="fv" style="color:#16a34a">● Sotuvda bor</span></div>
+      </div>
+    </div>
+
+    <!-- REVIEWS -->
+    <div class="pp-block" id="sec-rev">
+      <h2 class="pp-block-t">Sharhlar <span style="color:#9ca3af;font-weight:600;font-size:16px">(6)</span></h2>
+      <div class="pp-rev-summary">
+        <div class="prs-score">4.0</div>
+        <div>
+          <div class="pp-stars" style="font-size:20px">★★★★☆</div>
+          <div style="color:#6b7280;font-size:13px;margin-top:3px">6 ta sharh asosida</div>
+        </div>
+      </div>
+      <div class="pp-rev">
+        <div class="prv-hd"><span class="prv-ava">A</span><span class="prv-name">Aziz</span><span class="prv-stars">★★★★★</span></div>
+        <p class="prv-text">Sifatli mahsulot, tez yetkazib berishdi. Original ekan, rahmat timsoll!</p>
+      </div>
+      <div class="pp-rev">
+        <div class="prv-hd"><span class="prv-ava">B</span><span class="prv-name">Bekzod</span><span class="prv-stars">★★★★☆</span></div>
+        <p class="prv-text">Narxi arzon, sifati yaxshi. Mashinamga to'g'ri keldi.</p>
+      </div>
+      <div class="pp-rev">
+        <div class="prv-hd"><span class="prv-ava">D</span><span class="prv-name">Doniyor</span><span class="prv-stars">★★★★★</span></div>
+        <p class="prv-text">Ikkinchi marta xarid qilyapman, hamma narsa joyida. Tavsiya qilaman.</p>
+      </div>
+      <button class="rel-more" style="margin-top:6px">Barcha sharhlarni ko'rish →</button>
+    </div>
+  </div>
+</div>
 
 <script>
-function openModal(tab){document.getElementById('modal').classList.add('open');switchTab(tab)}
-function closeModal(){document.getElementById('modal').classList.remove('open')}
-document.getElementById('modal').addEventListener('click',function(e){if(e.target===this)closeModal()})
-function switchTab(tab){
-  document.getElementById('login-form').style.display=tab==='login'?'block':'none';
-  document.getElementById('register-form').style.display=tab==='register'?'block':'none';
-  document.getElementById('tab-login').classList.toggle('active',tab==='login');
-  document.getElementById('tab-register').classList.toggle('active',tab==='register');
+var cur=0,slides,dots;
+function initSlider(){slides=document.querySelectorAll('.slide');dots=document.querySelectorAll('.dot');}
+function goSlide(n){if(!slides)return;slides[cur].classList.remove('active');dots[cur].classList.remove('active');cur=n;slides[cur].classList.add('active');dots[cur].classList.add('active');}
+function chSlide(d){goSlide((cur+d+slides.length)%slides.length);}
+setInterval(function(){if(document.getElementById('home-page').style.display!=='none')chSlide(1);},5000);
+
+var tabs=null,tcs=null;
+function swTab(i){if(!tabs)tabs=document.querySelectorAll('.tab-btn');if(!tcs)tcs=document.querySelectorAll('.tc');tabs.forEach(function(t,j){t.classList.toggle('active',i===j);tcs[j].classList.toggle('active',i===j);});}
+
+function toggleAcc(hd){hd.parentElement.classList.toggle('open');}
+function clearFilters(){document.querySelectorAll('.filter-panel input[type=checkbox]').forEach(function(c){c.checked=false;});}
+
+function showCat(name){
+  document.getElementById('home-page').style.display='none';
+  document.getElementById('cat-page').style.display='block';
+  document.getElementById('cat-name-title').textContent=name;
+  document.getElementById('cat-name-bc').textContent=name;
+  document.querySelectorAll('.nl').forEach(function(b){b.classList.remove('active-nl');});
+  window.scrollTo(0,0);
 }
-function selectCat(el){document.querySelectorAll('.cat-option').forEach(e=>e.classList.remove('selected'));el.classList.add('selected')}
-function toggleCart(){document.getElementById('cart-panel').classList.toggle('open')}
-let cartCount=3;
-function addToCart(){cartCount++;document.getElementById('cart-count').textContent=cartCount;showToast("Korzinkaga qo'shildi!")}
-function showToast(msg){const t=document.getElementById('toast');document.getElementById('toast-msg').textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3000)}
-function handleLogin(){closeModal();showToast("Xush kelibsiz! Shaxsiy kabinetga yo'naltirilmoqda...")}
-function handleRegister(){closeModal();showToast("Ariza qabul qilindi! 1-2 ish kuni ichida tasdiqlash SMS keladi.")}
-function handleOrder(){toggleCart();showToast("Zakaz sotuvchiga yuborildi! Tez orada aloqaga chiqishadi.")}
-document.querySelectorAll('.filter-tag').forEach(t=>t.addEventListener('click',function(){document.querySelectorAll('.filter-tag').forEach(x=>x.classList.remove('active'));this.classList.add('active')}));
-document.querySelectorAll('.sidebar-item').forEach(i=>i.addEventListener('click',function(){this.closest('.sidebar-list').querySelectorAll('.sidebar-item').forEach(x=>x.classList.remove('active'));this.classList.add('active')}));
+function showHome(){
+  document.getElementById('cat-page').style.display='none';
+  document.getElementById('product-page').style.display='none';
+  document.getElementById('home-page').style.display='block';
+  window.scrollTo(0,0);
+  if(!slides)initSlider();
+}
+
+/* ===== PRODUCT DETAIL ===== */
+var relPool=[
+  {n:"NEXIA SUPPORT MANJET",o:"OEM: KOS-1234",p:"18 500 uzs",e:"⚙️",b:"AKSIYA",bc:"cb-sale"},
+  {n:"LACETTI TORMOZ NAKLADKA",o:"OEM: 96-4520",p:"45 000 uzs",e:"🛞",b:"TOP",bc:"cb-top"},
+  {n:"SPARK FARA SHISHASI",o:"OEM: SP-7781",p:"89 000 uzs",e:"💡",b:"",bc:""},
+  {n:"COBALT HAVO FILTRI",o:"OEM: AF-2030",p:"22 000 uzs",e:"🔽",b:"YANGI",bc:"cb-new"},
+  {n:"MATIZ GENERATOR REMEN",o:"OEM: 4PK954",p:"12 500 uzs",e:"🔩",b:"TOP",bc:"cb-top"},
+  {n:"GENTRA SALNIK TO'PLAMI",o:"OEM: GN-0091",p:"34 000 uzs",e:"🛢️",b:"",bc:""},
+  {n:"DAMAS RADIATOR",o:"OEM: DM-5510",p:"310 000 uzs",e:"🧩",b:"AKSIYA",bc:"cb-sale"},
+  {n:"ONIX MASLO FILTRI",o:"OEM: OF-1188",p:"18 000 uzs",e:"🔽",b:"",bc:""},
+  {n:"TAHOE STOP CHIROQ",o:"OEM: TH-7720",p:"175 000 uzs",e:"💡",b:"TOP",bc:"cb-top"},
+  {n:"CAPTIVA AMORTIZATOR",o:"OEM: CP-3344",p:"260 000 uzs",e:"🛞",b:"",bc:""},
+  {n:"TRACKER BAMPER KLIPSA",o:"OEM: TR-0102",p:"3 500 uzs",e:"🔩",b:"YANGI",bc:"cb-new"},
+  {n:"MALIBU SVECHA TO'PLAMI",o:"OEM: ML-9087",p:"95 000 uzs",e:"⚙️",b:"",bc:""}
+];
+function relCardHTML(d,extra){
+  var badge=d.b?'<span class="cbdg '+d.bc+'">'+d.b+'</span>':'';
+  return '<div class="cc'+(extra?' rel-extra':'')+'" onclick="openRel('+JSON.stringify(d).replace(/"/g,'&quot;')+')">'+
+    '<div class="cimg">'+badge+'<button class="cwish" onclick="event.stopPropagation()">♡</button><span style="opacity:.22">'+d.e+'</span></div>'+
+    '<div class="cbody"><div class="cname">'+d.n+'</div><div class="coem">'+d.o+'</div>'+
+    '<div class="cstars">★★★★☆ <span style="color:#9ca3af">(5)</span></div>'+
+    '<div class="cprice">'+d.p+'</div><button class="cbtn" onclick="event.stopPropagation()">🛒 Savatga</button></div></div>';
+}
+function buildRelated(){
+  var g=document.getElementById('rel-grid');
+  var html='';
+  for(var i=0;i<6;i++)html+=relCardHTML(relPool[i],false);
+  for(var j=6;j<relPool.length;j++)html+=relCardHTML(relPool[j],true);
+  g.innerHTML=html;
+  document.getElementById('rel-more-btn').textContent="Ko'proq →";
+}
+function toggleRelated(){
+  var exp=document.querySelectorAll('.rel-extra');
+  var btn=document.getElementById('rel-more-btn');
+  var open=exp.length&&exp[0].classList.contains('show');
+  exp.forEach(function(e){e.classList.toggle('show',!open);});
+  btn.textContent=open?"Ko'proq →":"Yashirish ↑";
+}
+function openRel(d){openProduct(d.n,d.o,d.p,d.e);}
+
+function openProduct(name,oem,price,emoji){
+  document.getElementById('home-page').style.display='none';
+  document.getElementById('cat-page').style.display='none';
+  document.getElementById('product-page').style.display='block';
+  document.getElementById('pd-title').textContent=name||'Mahsulot';
+  document.getElementById('pd-bc').textContent=name||'Mahsulot';
+  var oemClean=(oem||'').replace('OEM: ','').trim()||'—';
+  document.getElementById('pd-oem').textContent=oemClean;
+  document.getElementById('pd-oem2').textContent=oemClean;
+  document.getElementById('pd-price').textContent=price||'—';
+  document.getElementById('pd-emoji').textContent=emoji||'🔩';
+  document.getElementById('pd-emoji-thumb').textContent=emoji||'🔩';
+  buildRelated();
+  document.querySelectorAll('.pp-tab').forEach(function(t,i){t.classList.toggle('active',i===0);});
+  window.scrollTo(0,0);
+}
+function ppTab(el,id){
+  document.querySelectorAll('.pp-tab').forEach(function(t){t.classList.remove('active');});
+  el.classList.add('active');
+  var target=document.getElementById(id);
+  if(target){
+    var y=target.getBoundingClientRect().top+window.pageYOffset-170;
+    window.scrollTo({top:y,behavior:'smooth'});
+  }
+}
+/* make all product cards clickable */
+function bindCards(){
+  function grab(card){
+    var nameEl=card.querySelector('.pn,.cname');
+    var oemEl=card.querySelector('.po,.coem');
+    var priceEl=card.querySelector('.pp,.cprice');
+    var emEl=card.querySelector('.pimg span[style],.cimg span[style]');
+    return {
+      n:nameEl?nameEl.textContent.trim():'Mahsulot',
+      o:oemEl?oemEl.textContent.trim():'',
+      p:priceEl?priceEl.textContent.trim():'',
+      e:emEl?emEl.textContent.trim():'🔩'
+    };
+  }
+  document.querySelectorAll('.pc,.cc').forEach(function(card){
+    if(card.classList.contains('rel-extra')||card.closest('#rel-grid'))return;
+    card.addEventListener('click',function(e){
+      if(e.target.closest('.pa,.cbtn,.pw,.cwish'))return;
+      var d=grab(card);
+      openProduct(d.n,d.o,d.p,d.e);
+    });
+  });
+}
+bindCards();
+initSlider();
 </script>
-</body>
-</html>
+</body></html>
